@@ -1,0 +1,29 @@
+<div class="container">
+        <button (click)="setRegister()">Register</button>
+        <button (click)="setLogin()">Login</button>
+
+        <div *ngIf="registerPageActive">
+                Enter a Name<input type="text" [(ngModel)]="name">
+                <br/>
+                Enter a age<input type="number" [(ngModel)]="age">
+                <br/>
+                Enter a password<input type="text" [(ngModel)]="registerPassword">
+                <br/>
+                Select the User Group
+                        <select [(ngModel)]="userRole">
+                                <option value="Manager">Manager</option>
+                                <option value="teamMember">Team Member</option>
+                        </select>
+                <button (click)="save()">Save User</button>
+        </div>
+
+        <div *ngIf="loginPageActive">
+                 Enter a Name<input type="text" [(ngModel)]="username">
+                <br/>
+               
+                Enter a password<input type="text" [(ngModel)]="userpassword">
+                <br/>
+
+                <button (click)="loginUser(username,userpassword)">Login</button>
+        </div>
+</div>

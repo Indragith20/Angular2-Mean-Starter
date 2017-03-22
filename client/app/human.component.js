@@ -1,0 +1,67 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var app_service_1 = require('./app.service');
+var HumanComponent = (function () {
+    function HumanComponent(humanService, router) {
+        this.humanService = humanService;
+        this.router = router;
+        this.registerPageActive = true;
+        this.loginPageActive = false;
+        // this.registerPageActive=true;
+        // this.loginPageActive=false;
+    }
+    HumanComponent.prototype.setRegister = function () {
+        this.registerPageActive = true;
+        this.loginPageActive = false;
+    };
+    HumanComponent.prototype.setLogin = function () {
+        this.registerPageActive = false;
+        this.loginPageActive = true;
+    };
+    HumanComponent.prototype.save = function () {
+        console.log(this.registerPassword);
+        var human = {
+            name: this.name,
+            age: this.age,
+            password: this.registerPassword,
+            userRole: this.userRole
+        };
+        this.humanService.addHuman(human)
+            .subscribe(function (data) {
+            console.log(data);
+        });
+    };
+    HumanComponent.prototype.loginUser = function (name, pass) {
+        var _this = this;
+        this.humanService.autheticateUser(name, pass)
+            .subscribe(function (data) {
+            var details = JSON.parse(data);
+            console.log(JSON.parse(data));
+            if (details.userRole == "Manager") {
+                _this.router.navigate(['managerMain']);
+            }
+        });
+    };
+    HumanComponent = __decorate([
+        core_1.Component({
+            selector: 'human',
+            moduleId: module.id,
+            templateUrl: 'human.html',
+            providers: [app_service_1.HumanService]
+        }), 
+        __metadata('design:paramtypes', [app_service_1.HumanService, router_1.Router])
+    ], HumanComponent);
+    return HumanComponent;
+}());
+exports.HumanComponent = HumanComponent;
+//# sourceMappingURL=human.component.js.map
