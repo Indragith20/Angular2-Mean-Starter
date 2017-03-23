@@ -9,22 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var app_service_1 = require('../app.service');
-var ManagerComponent = (function () {
-    function ManagerComponent(humanService) {
-        this.humanService = humanService;
-        this.managerDet = this.humanService.userDet;
-        console.log("Manager Details==>" + this.managerDet);
+var DashboardManagerComponent = (function () {
+    function DashboardManagerComponent() {
     }
-    ManagerComponent = __decorate([
+    DashboardManagerComponent = __decorate([
         core_1.Component({
-            selector: 'manager',
+            selector: 'dashboard',
             moduleId: module.id,
-            templateUrl: 'manager.html',
+            templateUrl: 'dashboard.html'
         }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService])
-    ], ManagerComponent);
-    return ManagerComponent;
+        __metadata('design:paramtypes', [])
+    ], DashboardManagerComponent);
+    return DashboardManagerComponent;
 }());
-exports.ManagerComponent = ManagerComponent;
-//# sourceMappingURL=manager.component.js.map
+exports.DashboardManagerComponent = DashboardManagerComponent;
+//# sourceMappingURL=dashboard.manager.component.js.map

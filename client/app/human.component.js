@@ -39,6 +39,7 @@ var HumanComponent = (function () {
         this.humanService.addHuman(human)
             .subscribe(function (data) {
             console.log(data);
+            //this.loginDet.emit(data);
         });
     };
     HumanComponent.prototype.loginUser = function (name, pass) {
@@ -48,7 +49,9 @@ var HumanComponent = (function () {
             var details = JSON.parse(data);
             console.log(JSON.parse(data));
             if (details.userRole == "Manager") {
-                _this.router.navigate(['managerMain']);
+                _this.humanService.userDet = details;
+                console.log("First Component == >" + _this.humanService.userDet);
+                _this.router.navigate(['/managerMain']);
             }
         });
     };
@@ -57,7 +60,6 @@ var HumanComponent = (function () {
             selector: 'human',
             moduleId: module.id,
             templateUrl: 'human.html',
-            providers: [app_service_1.HumanService]
         }), 
         __metadata('design:paramtypes', [app_service_1.HumanService, router_1.Router])
     ], HumanComponent);

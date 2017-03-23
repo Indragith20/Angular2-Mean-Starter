@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component,EventEmitter,Input,Output} from '@angular/core';
 import {Router} from '@angular/router'
 
 import {HumanService} from './app.service';
@@ -7,10 +7,11 @@ import {HumanService} from './app.service';
     selector:'human',
     moduleId:module.id,
     templateUrl:'human.html' ,
-    providers:[HumanService]   
+    
 })
 
 export class HumanComponent{
+    
     name:string;
     age:number;
     registerPassword:string;
@@ -30,6 +31,8 @@ export class HumanComponent{
         this.loginPageActive=true;
     }
 
+    
+
     save(){
         console.log(this.registerPassword);
         var human = {
@@ -41,6 +44,7 @@ export class HumanComponent{
         this.humanService.addHuman(human)
             .subscribe(data=>{
                 console.log(data);
+                //this.loginDet.emit(data);
             });
     }
 
@@ -51,7 +55,9 @@ export class HumanComponent{
                 var details=JSON.parse(data);
                 console.log(JSON.parse(data));
                 if(details.userRole=="Manager"){
-                    this.router.navigate(['managerMain']);
+                    this.humanService.userDet=details;
+                    console.log("First Component == >"+this.humanService.userDet);
+                    this.router.navigate(['/managerMain']);
                 }
                 
             })

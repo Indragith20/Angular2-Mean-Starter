@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 
 export class HumanService{
 
+    public userDet:any;
+
     constructor(private http : Http){
 
     }

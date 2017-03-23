@@ -9,22 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var app_service_1 = require('../app.service');
-var ManagerComponent = (function () {
-    function ManagerComponent(humanService) {
-        this.humanService = humanService;
-        this.managerDet = this.humanService.userDet;
-        console.log("Manager Details==>" + this.managerDet);
+var PostManagerComponent = (function () {
+    function PostManagerComponent() {
     }
-    ManagerComponent = __decorate([
+    PostManagerComponent = __decorate([
         core_1.Component({
-            selector: 'manager',
+            selector: 'post',
             moduleId: module.id,
-            templateUrl: 'manager.html',
+            templateUrl: 'post.html'
         }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService])
-    ], ManagerComponent);
-    return ManagerComponent;
+        __metadata('design:paramtypes', [])
+    ], PostManagerComponent);
+    return PostManagerComponent;
 }());
-exports.ManagerComponent = ManagerComponent;
-//# sourceMappingURL=manager.component.js.map
+exports.PostManagerComponent = PostManagerComponent;
+//# sourceMappingURL=post.manager.component.js.map

@@ -1,1 +1,9 @@
-<h1>Yuuuup it's working</h1>
+<h1>Hi {{managerDet.name}} ! Welcome</h1>
+<br />
+<div class="container">
+    <a [routerLink]="['./home']">Home</a>
+    <a [routerLink]="['./dashboard']"> Dashboard</a>
+    <a [routerLink]="['./post']">Post</a>
+    <a [routerLink]="['./home']">LogOut</a>
+</div>
+<router-outlet></router-outlet>
