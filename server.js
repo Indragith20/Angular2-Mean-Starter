@@ -10,6 +10,8 @@ var morgan = require('morgan');
 
 var mainRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
+var postRouter = require('./routes/postRouter');
+
 
 var app = express();
 app.use(morgan('dev'));
@@ -31,7 +33,7 @@ mongoose.connect(DB,function(err){
 
 app.use('/',mainRouter);
 app.use('/api',apiRouter);
-
+app.use('/post',postRouter);
 
 
 app.set('views',path.join(__dirname,'/client/views'));
