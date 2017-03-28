@@ -15,5 +15,17 @@ router.post('/',function(req,res){
     })
 });
 
+router.get('/getPosts',function(req,res){
+     Model.find({},function(err,resource){
+        if(err){
+            res.send(err).status(501);
+        }
+        else{
+            console.log(resource);
+            res.send(resource).status(200);
+        }
+    });
+});
+
 
 module.exports = router;
