@@ -25,9 +25,7 @@ router.get('/checkUser',function(req,res){
         }
         else{
             console.log(resource);
-            
-            
-            res.json(resource);
+             res.json(resource);
         }
     });
 });

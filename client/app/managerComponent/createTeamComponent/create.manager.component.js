@@ -10,37 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var app_service_1 = require('../../app.service');
-var homeService_1 = require('./homeService');
+var createService_1 = require('./createService');
 var router_1 = require('@angular/router');
-var HomeManagerComponent = (function () {
-    function HomeManagerComponent(humanService, homeService, router) {
+var CreateTeamComponent = (function () {
+    function CreateTeamComponent(humanService, createService, router) {
         this.humanService = humanService;
-        this.homeService = homeService;
+        this.createService = createService;
         this.router = router;
         this.managerDet = this.humanService.userDet;
-        console.log("Manager Details from Home page==>" + this.managerDet);
+        console.log("Manager Details from team creation page==>" + this.managerDet);
     }
-    HomeManagerComponent.prototype.ngOnInit = function () {
-        if (this.managerDet.teams.length > 0) {
-            this.teamAvaliable = true;
-        }
-        else {
-            this.teamNotAvailable = true;
-        }
+    CreateTeamComponent.prototype.createTeam = function () {
+        var teamDetails = {
+            teamName: this.teamName,
+            teamDescription: this.teamDescription
+        };
+        this.createService.createNewTeam(teamDetails, this.managerDet._id)
+            .subscribe(function (response) { return response.json; });
     };
-    HomeManagerComponent.prototype.createTeam = function () {
-        this.router.navigate(['/managerMain/createteam']);
-    };
-    HomeManagerComponent = __decorate([
+    CreateTeamComponent = __decorate([
         core_1.Component({
-            selector: 'home',
+            selector: 'createteam',
             moduleId: module.id,
-            templateUrl: 'home.html',
-            providers: [homeService_1.HomeService]
+            templateUrl: 'createteam.html',
+            providers: [createService_1.CreateService]
         }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService, homeService_1.HomeService, router_1.Router])
-    ], HomeManagerComponent);
-    return HomeManagerComponent;
+        __metadata('design:paramtypes', [app_service_1.HumanService, createService_1.CreateService, router_1.Router])
+    ], CreateTeamComponent);
+    return CreateTeamComponent;
 }());
-exports.HomeManagerComponent = HomeManagerComponent;
-//# sourceMappingURL=home.manager.component.js.map
+exports.CreateTeamComponent = CreateTeamComponent;
+//# sourceMappingURL=create.manager.component.js.map

@@ -32,7 +32,7 @@ var HumanComponent = (function () {
         console.log(this.registerPassword);
         var human = {
             name: this.name,
-            age: this.age,
+            contactNumber: this.contactno,
             password: this.registerPassword,
             userRole: this.userRole
         };

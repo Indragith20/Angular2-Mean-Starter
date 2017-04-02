@@ -13,7 +13,7 @@ import {HumanService} from './app.service';
 export class HumanComponent{
     
     name:string;
-    age:number;
+    contactno:number;
     registerPassword:string;
     userRole:string;
     registerPageActive:boolean = true;
@@ -37,7 +37,7 @@ export class HumanComponent{
         console.log(this.registerPassword);
         var human = {
             name:this.name,
-            age:this.age,
+            contactNumber:this.contactno,
             password:this.registerPassword,
             userRole:this.userRole
         }

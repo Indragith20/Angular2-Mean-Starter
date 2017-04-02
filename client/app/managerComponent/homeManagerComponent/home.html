@@ -1,8 +1,14 @@
 <h1>Home Page</h1>
 
 <div class="container">
-    <div *ngFor="let post of posts">
-        <h3 class="text-center">{{post.title}}</h3> <br/>
-        <h5>Details==> {{post.details}}</h5>
+    <div *ngIf="teamAvailable">
+        <div *ngFor="let post of posts">
+            <h3 class="text-center">{{post.title}}</h3> <br/>
+            <h5>Details==> {{post.details}}</h5>
+        </div>
+    </div>
+    <div *ngIf="teamNotAvailable">
+        <button class="btn btn-primary" (click)="createTeam()">+ Create a Team</button>
     </div>
 </div>
+

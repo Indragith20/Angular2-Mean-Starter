@@ -6,6 +6,7 @@ import {ManagerComponent} from './managerComponent/manager.component';
 import {HomeManagerComponent} from './managerComponent/homeManagerComponent/home.manager.component';
 import {DashboardManagerComponent} from './managerComponent/dashboardManagerComponent/dashboard.manager.component';
 import {PostManagerComponent} from './managerComponent/postManagerComponent/post.manager.component';
+import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
 
 const routes: Routes = [
   // map '/persons' to the people list component
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeManagerComponent },
       { path: 'dashboard', component: DashboardManagerComponent},
-      {path:'post',component:PostManagerComponent}
+      {path:'post',component:PostManagerComponent},
+      {path:'createteam',component:CreateTeamComponent}
     ]
   },
   

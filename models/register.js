@@ -5,9 +5,12 @@ var Schema=mongoose.Schema;
 
 var userDetailsSchema = new Schema({
     name:String,
-    age:Number,
+    contactNumber:Number,
     password:String,
-    userRole:String
+    userRole:String,
+    teams:[],
+    posts:[],
+    comments:[]
 });
 
 var Model=mongoose.model('User',userDetailsSchema);
