@@ -18,15 +18,29 @@ var CreateTeamComponent = (function () {
         this.createService = createService;
         this.router = router;
         this.managerDet = this.humanService.userDet;
+        this.addMember = false;
+        this.createNewTeam = true;
         console.log("Manager Details from team creation page==>" + this.managerDet);
     }
     CreateTeamComponent.prototype.createTeam = function () {
+        var _this = this;
         var teamDetails = {
             teamName: this.teamName,
             teamDescription: this.teamDescription
         };
         this.createService.createNewTeam(teamDetails, this.managerDet._id)
-            .subscribe(function (response) { return response.json; });
+            .subscribe(function (data) {
+            var details = JSON.parse(data);
+            if (details) {
+                _this.savedTeamName = details.teamName;
+                _this.addMember = true;
+                _this.createNewTeam = false;
+                console.log(JSON.parse(data));
+            }
+        });
+    };
+    CreateTeamComponent.prototype.addNewMember = function () {
+        console.log("navigate to add member page");
     };
     CreateTeamComponent = __decorate([
         core_1.Component({

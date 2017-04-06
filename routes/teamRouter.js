@@ -4,7 +4,10 @@ var team=require('../models/teams');
 var manager=require('../models/register');
 
 router.post('/createTeam',function(req,res){
-    var human = new team(req.body);
+    var human = new team({
+        teamName:req.body.teamName,
+        teamDescription:req.body.teamDescription,
+        members:[req.query.managerId]});
     var managerId=req.query.managerId;
     console.log("managerId is "+managerId);
     human.save(function(err,resource){
@@ -12,7 +15,7 @@ router.post('/createTeam',function(req,res){
             res.send(err).status(501);
         }
         else{
-            console.log("resource Details==>"+resource.teamId);
+            console.log("resource Details==>"+resource);
             var teamId=resource.teamId;
             manager.findByIdAndUpdate({_id:managerId},{$push: {"teams": teamId}},
                     {safe: true, upsert: true, new : true},function(err,member){
@@ -21,7 +24,7 @@ router.post('/createTeam',function(req,res){
                }
                else{
                    console.log("Updated Member ==>"+member);
-                    res.json(member).status(200);
+                    res.send(resource).status(200);
                }
             })
             

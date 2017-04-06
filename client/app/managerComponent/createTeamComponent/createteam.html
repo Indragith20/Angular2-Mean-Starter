@@ -1,6 +1,10 @@
-<div class="container">
+<div class="container" *ngIf="createNewTeam">
     Team Name : <input type="text" [(ngModel)]="teamName"><br/>
     Team Description:<input type="text" [(ngModel)]="teamDescription"><br/>
 
     <button class="btn btn-primary" (click)="createTeam()">CreateTeam</button>
+</div>
+<div class="container" *ngIf="addMember">
+    <h1>Team Creted Successfully ==> {{savedTeamName}}</h1>
+    <button class="btn btn-success" (click)="addNewMember()">+ Add New Member</button>
 </div>

@@ -11,7 +11,7 @@ export class CreateService{
         var headers = new Headers();
         headers.append('Content-type','application/json');
         return this.http.post('team/createTeam?managerId='+managerId,postData,{headers:headers})
-                .map(response=> response._body);
+                .map(response=>response._body);
     }
 
 }

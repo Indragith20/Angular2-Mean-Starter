@@ -6,7 +6,8 @@ var Schema=mongoose.Schema;
 
 var teamDetailsSchema = new Schema({
     teamName:String,
-    teamDescription:String
+    teamDescription:String,
+    members:[]
 });
 
 teamDetailsSchema.plugin(AutoIncrement, {inc_field: 'teamId'});
