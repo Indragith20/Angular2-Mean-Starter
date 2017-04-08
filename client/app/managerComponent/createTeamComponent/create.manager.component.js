@@ -32,6 +32,7 @@ var CreateTeamComponent = (function () {
             .subscribe(function (data) {
             var details = JSON.parse(data);
             if (details) {
+                _this.savedTeamDetails = details;
                 _this.savedTeamName = details.teamName;
                 _this.addMember = true;
                 _this.createNewTeam = false;
@@ -41,6 +42,7 @@ var CreateTeamComponent = (function () {
     };
     CreateTeamComponent.prototype.addNewMember = function () {
         console.log("navigate to add member page");
+        this.router.navigate(['/addMember']);
     };
     CreateTeamComponent = __decorate([
         core_1.Component({

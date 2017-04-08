@@ -49,6 +49,6 @@ export class CreateTeamComponent{
 
     addNewMember(){
         console.log("navigate to add member page");
-        this.router.navigate(['/addMember',this.savedTeamDetails]);
+        this.router.navigate(['/addMember']);
     }
 }

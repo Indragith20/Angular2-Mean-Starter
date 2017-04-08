@@ -12,11 +12,12 @@ import {HomeManagerComponent} from './managerComponent/homeManagerComponent/home
 import {DashboardManagerComponent} from './managerComponent/dashboardManagerComponent/dashboard.manager.component';
 import {PostManagerComponent} from './managerComponent/postManagerComponent/post.manager.component';
 import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
+import {AddMemberComponent} from  './managerComponent/addMemberComponent/add.member.component';
 import {HumanService} from './app.service';
 
 @NgModule({
   imports: [ BrowserModule,HttpModule,FormsModule,routing ],
-  declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,DashboardManagerComponent,PostManagerComponent,CreateTeamComponent],
+  declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,DashboardManagerComponent,PostManagerComponent,CreateTeamComponent,AddMemberComponent],
   providers: [HumanService],
   bootstrap: [ AppComponent ]
 })
