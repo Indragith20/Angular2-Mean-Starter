@@ -21,6 +21,13 @@ var AddService = (function () {
         return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
+    AddService.prototype.addNewMember = function (details, teamId) {
+        var headers = new http_1.Headers();
+        console.log("new Menr Details ==>" + JSON.stringify(details));
+        headers.append('Content-type', 'application/json');
+        return this.http.post('team/addMember?teamId=' + teamId, details, { headers: headers })
+            .map(function (response) { return response._body; });
+    };
     AddService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

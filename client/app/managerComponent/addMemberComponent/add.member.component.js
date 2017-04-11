@@ -23,10 +23,28 @@ var AddMemberComponent = (function () {
     AddMemberComponent.prototype.ngOnInit = function () {
         var _this = this;
         var teams = JSON.stringify(this.managerDet.teams);
+        this.teamDetailPage = true;
+        this.addMemberPage = false;
         this.addService.getTeams(teams)
             .subscribe(function (data) {
             console.log(data.json);
             _this.teamDetails = JSON.parse(data);
+        });
+    };
+    //Add Member Function
+    AddMemberComponent.prototype.goToAddMemberPage = function (team) {
+        this.addMemberPage = true;
+        this.teamDetailPage = false;
+        this.selectedTeamId = team.teamId;
+    };
+    AddMemberComponent.prototype.addMemberToTeam = function () {
+        var memberDetails = {
+            memberName: this.name,
+            memberContact: this.contactno
+        };
+        this.addService.addNewMember(memberDetails, this.selectedTeamId)
+            .subscribe(function (data) {
+            console.log(data);
         });
     };
     AddMemberComponent = __decorate([

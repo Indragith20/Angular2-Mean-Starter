@@ -1,6 +1,12 @@
-<div class="container">
-    <div class="col-md-3" *ngFor="let teams of teamDetails">
+<div class="container" *ngIf="teamDetailPage">
+    <div class="col-md-3" *ngFor="let teams of teamDetails" (click)="goToAddMemberPage(teams)">
          <h3>{{teams.teamName}}</h3>
          <h4>{{teams.teamDescription}}</h4>       
     </div>
+</div>
+
+<div class="container" *ngIf="addMemberPage">
+    Name: <input type="text" placeholder="Enter the Name" [(ngModel)]="name"> <br/>
+    Contact Number: <input type="number" placeholder="Contact Number" [(ngModel)]="contactno"> <br/>
+    <button class="btn btn-danger" (click)="addMemberToTeam()">Add Member</button>
 </div>
