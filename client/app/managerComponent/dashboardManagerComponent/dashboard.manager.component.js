@@ -9,16 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var app_service_1 = require('../../app.service');
+var dash_service_1 = require('./dash.service');
 var DashboardManagerComponent = (function () {
-    function DashboardManagerComponent() {
+    function DashboardManagerComponent(router, humanService, dashService) {
+        this.router = router;
+        this.humanService = humanService;
+        this.dashService = dashService;
+        this.managerDet = this.humanService.userDet;
+        console.log("Manager Details from add Member page==>" + JSON.stringify(this.managerDet.teams));
     }
+    DashboardManagerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var teams = JSON.stringify(this.managerDet.teams);
+        this.isTeamSelected = false;
+        this.dashService.getTeams(teams)
+            .subscribe(function (data) {
+            console.log(data);
+            _this.teams = JSON.parse(data);
+        });
+    };
     DashboardManagerComponent = __decorate([
         core_1.Component({
             selector: 'dashboard',
             moduleId: module.id,
-            templateUrl: 'dashboard.html'
+            templateUrl: 'dashboard.html',
+            providers: [dash_service_1.DashService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
     ], DashboardManagerComponent);
     return DashboardManagerComponent;
 }());

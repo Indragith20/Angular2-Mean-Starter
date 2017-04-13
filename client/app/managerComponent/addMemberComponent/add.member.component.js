@@ -27,7 +27,7 @@ var AddMemberComponent = (function () {
         this.addMemberPage = false;
         this.addService.getTeams(teams)
             .subscribe(function (data) {
-            console.log(data.json);
+            console.log(data);
             _this.teamDetails = JSON.parse(data);
         });
     };

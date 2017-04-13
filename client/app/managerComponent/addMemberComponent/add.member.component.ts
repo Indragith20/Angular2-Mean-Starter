@@ -29,7 +29,7 @@ export class AddMemberComponent{
         this.addMemberPage=false;
         this.addService.getTeams(teams)
         .subscribe(data=>{
-            console.log(data.json);
+            console.log(data);
             this.teamDetails=JSON.parse(data);
         });
     }

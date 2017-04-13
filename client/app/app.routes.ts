@@ -21,7 +21,16 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeManagerComponent },
-      { path: 'dashboard', component: DashboardManagerComponent},
+      {  
+        path: 'dashboard', 
+        component: DashboardManagerComponent,
+        children:[
+            { path: '', pathMatch: 'full' },
+            { path: 'teams', component: DashboardManagerComponent },
+            { path :'vacationtracker', component:DashboardManagerComponent},
+            {path:'activities',component:DashboardManagerComponent}
+        ]
+    },
       {path:'post',component:PostManagerComponent},
       {path:'createteam',component:CreateTeamComponent},
       {path:'addMember',component:AddMemberComponent}
@@ -32,7 +41,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/main',
     pathMatch: 'full'
-  },
+  }
   
 
 ];

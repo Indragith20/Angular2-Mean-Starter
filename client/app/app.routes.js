@@ -19,7 +19,16 @@ var routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: home_manager_component_1.HomeManagerComponent },
-            { path: 'dashboard', component: dashboard_manager_component_1.DashboardManagerComponent },
+            {
+                path: 'dashboard',
+                component: dashboard_manager_component_1.DashboardManagerComponent,
+                children: [
+                    { path: '', pathMatch: 'full' },
+                    { path: 'teams', component: dashboard_manager_component_1.DashboardManagerComponent },
+                    { path: 'vacationtracker', component: dashboard_manager_component_1.DashboardManagerComponent },
+                    { path: 'activities', component: dashboard_manager_component_1.DashboardManagerComponent }
+                ]
+            },
             { path: 'post', component: post_manager_component_1.PostManagerComponent },
             { path: 'createteam', component: create_manager_component_1.CreateTeamComponent },
             { path: 'addMember', component: add_member_component_1.AddMemberComponent }
@@ -29,7 +38,7 @@ var routes = [
         path: '',
         redirectTo: '/main',
         pathMatch: 'full'
-    },
+    }
 ];
 exports.routing = router_1.RouterModule.forRoot(routes);
 //# sourceMappingURL=app.routes.js.map
