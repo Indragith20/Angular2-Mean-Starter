@@ -13,6 +13,7 @@ import {DashService} from './dash.service';
 export class DashboardManagerComponent{
     managerDet:any;
     teams:any;
+    selectedTeam:any;
     isTeamSelected:boolean;
 
     constructor(private router:Router,private humanService:HumanService,private dashService:DashService){
@@ -28,5 +29,12 @@ export class DashboardManagerComponent{
             console.log(data);
             this.teams=JSON.parse(data);
         });
+    }
+
+    changeTeam(team:any){
+        this.isTeamSelected=true;
+        this.selectedTeam=team;
+        console.log("Selected Team from dashboard Page==>"+team+"JSON==>"+JSON.stringify(team));
+        this.dashService.teamSelected=this.selectedTeam;
     }
 }

@@ -12,6 +12,7 @@ var mainRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 var postRouter = require('./routes/postRouter');
 var teamRouter = require('./routes/teamRouter');
+var teamDetailsRouter = require('./routes/teamDetailsRouter');
 
 var app = express();
 app.use(morgan('dev'));
@@ -35,6 +36,7 @@ app.use('/',mainRouter);
 app.use('/api',apiRouter);
 app.use('/post',postRouter);
 app.use('/team',teamRouter);
+app.use('/teamDetails',teamDetailsRouter);
 // app.use('*',mainRouter);
 
 

@@ -10,42 +10,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var app_service_1 = require('../../app.service');
-var dash_service_1 = require('./dash.service');
-var DashboardManagerComponent = (function () {
-    function DashboardManagerComponent(router, humanService, dashService) {
+var app_service_1 = require('../../../app.service');
+var dash_service_1 = require('../dash.service');
+var TeamDashBoardComponent = (function () {
+    function TeamDashBoardComponent(router, humanService, dashService) {
         this.router = router;
         this.humanService = humanService;
         this.dashService = dashService;
         this.managerDet = this.humanService.userDet;
-        console.log("Manager Details from add Member page==>" + JSON.stringify(this.managerDet.teams));
+        this.selectedTeam = this.dashService.teamSelected;
+        console.log("Selected Team from Team Details Page==>" + JSON.stringify(this.selectedTeam));
     }
-    DashboardManagerComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        var teams = JSON.stringify(this.managerDet.teams);
-        this.isTeamSelected = false;
-        this.dashService.getTeams(teams)
+    TeamDashBoardComponent.prototype.ngOnInit = function () {
+        // this.memberIds=JSON.stringify(this.selectedTeam.members);
+        // console.log("Member Id ==>"+this.memberIds);
+        for (var i = 0; i < this.selectedTeam.members.length(); i++) {
+            this.memberIds = {
+                members: this.selectedTeam.members[i]
+            };
+        }
+        this.memberIdsToFind = JSON.stringify(this.memberIds);
+        console.log("Member Id ==>" + this.memberIdsToFind);
+        this.dashService.getTeamMembers(this.memberIdsToFind)
             .subscribe(function (data) {
             console.log(data);
-            _this.teams = JSON.parse(data);
         });
     };
-    DashboardManagerComponent.prototype.changeTeam = function (team) {
-        this.isTeamSelected = true;
-        this.selectedTeam = team;
-        console.log("Selected Team from dashboard Page==>" + team + "JSON==>" + JSON.stringify(team));
-        this.dashService.teamSelected = this.selectedTeam;
-    };
-    DashboardManagerComponent = __decorate([
+    TeamDashBoardComponent = __decorate([
         core_1.Component({
-            selector: 'dashboard',
+            selector: 'team-details',
             moduleId: module.id,
-            templateUrl: 'dashboard.html',
-            providers: [dash_service_1.DashService]
+            templateUrl: 'teamDetails.html',
         }), 
         __metadata('design:paramtypes', [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
-    ], DashboardManagerComponent);
-    return DashboardManagerComponent;
+    ], TeamDashBoardComponent);
+    return TeamDashBoardComponent;
 }());
-exports.DashboardManagerComponent = DashboardManagerComponent;
-//# sourceMappingURL=dashboard.manager.component.js.map
+exports.TeamDashBoardComponent = TeamDashBoardComponent;
+//# sourceMappingURL=team.dashboard.component.js.map

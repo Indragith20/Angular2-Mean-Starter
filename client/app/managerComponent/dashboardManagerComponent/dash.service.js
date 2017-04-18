@@ -21,6 +21,13 @@ var DashService = (function () {
         return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
+    DashService.prototype.getTeamMembers = function (ids) {
+        var headers = new http_1.Headers();
+        console.log("IDS from service==>" + ids);
+        headers.append('Content-type', 'application/json');
+        return this.http.get('teamDetails/getMembers?memberIds[]=' + ids, { headers: headers })
+            .map(function (response) { return response._body; });
+    };
     DashService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

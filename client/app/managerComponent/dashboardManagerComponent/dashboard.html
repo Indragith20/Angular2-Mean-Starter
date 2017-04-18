@@ -3,8 +3,8 @@
 <div class="container">
     
     Select the Team:
-    <select class="form-control" [(ngModel)]="selectedTeam">
-        <option *ngFor="let team of teams">
+    <select class="form-control" [(ngModel)]="selectedTeam" (ngModelChange)="changeTeam(selectedTeam)">
+        <option *ngFor="let team of teams" [ngValue]="team">
             {{team.teamName}}
         </option>
     </select>
@@ -12,6 +12,7 @@
 
 
 <div class="container" *ngIf="isTeamSelected">
+
     <a [routerLink]="['./teams']">Team Detaills</a>
     <a [routerLink]="['./vacationtracker']">Vacation Tracker</a>
     <a [routerLink]="['./activities']">Recent Activities</a>
@@ -21,8 +22,3 @@
 
 <router-outlet></router-outlet>
 
-<!--<ng-template #loading_content>
-    <span class="text-center">
-        Please select the team...
-    </span> 
-</ng-template>-->

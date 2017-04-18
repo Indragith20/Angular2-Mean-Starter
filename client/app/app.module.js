@@ -18,6 +18,7 @@ var human_component_1 = require('./human.component');
 var manager_component_1 = require('./managerComponent/manager.component');
 var home_manager_component_1 = require('./managerComponent/homeManagerComponent/home.manager.component');
 var dashboard_manager_component_1 = require('./managerComponent/dashboardManagerComponent/dashboard.manager.component');
+var team_dashboard_component_1 = require('./managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component');
 var post_manager_component_1 = require('./managerComponent/postManagerComponent/post.manager.component');
 var create_manager_component_1 = require('./managerComponent/createTeamComponent/create.manager.component');
 var add_member_component_1 = require('./managerComponent/addMemberComponent/add.member.component');
@@ -28,7 +29,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routes_1.routing],
-            declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent, dashboard_manager_component_1.DashboardManagerComponent, post_manager_component_1.PostManagerComponent, create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent],
+            declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent, dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent, create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent],
             providers: [app_service_1.HumanService],
             bootstrap: [app_component_1.AppComponent]
         }), 
