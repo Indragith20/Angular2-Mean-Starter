@@ -21,11 +21,11 @@ var DashService = (function () {
         return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
-    DashService.prototype.getTeamMembers = function (ids) {
+    DashService.prototype.getTeamMembers = function (id) {
         var headers = new http_1.Headers();
-        console.log("IDS from service==>" + ids);
+        console.log("IDS from service==>" + id);
         headers.append('Content-type', 'application/json');
-        return this.http.get('teamDetails/getMembers?memberIds[]=' + ids, { headers: headers })
+        return this.http.get('teamDetails/getMembers?teamId=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
     DashService = __decorate([

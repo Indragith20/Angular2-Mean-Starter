@@ -13,6 +13,7 @@ export class TeamDashBoardComponent{
     managerDet:any;
    selectedTeam:any;
    memberIds:string;
+   teamMemberDetails:any;
 
     constructor(private router:Router,private humanService:HumanService,private dashService:DashService){
         this.managerDet=this.humanService.userDet;
@@ -21,11 +22,11 @@ export class TeamDashBoardComponent{
     }
 
     ngOnInit(){
-        this.memberIds=JSON.stringify(this.selectedTeam.members);
-        console.log("Member Id ==>"+this.memberIds);
-        this.dashService.getTeamMembers(this.memberIds)
+        
+        this.dashService.getTeamMembers(this.selectedTeam.teamId)
                 .subscribe(data=>{
                     console.log(data);
+                    this.teamMemberDetails=JSON.parse(data);
                 })
     }
 }

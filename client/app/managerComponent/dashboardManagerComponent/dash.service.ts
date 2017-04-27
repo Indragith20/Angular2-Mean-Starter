@@ -17,11 +17,11 @@ export class DashService{
     }
 
 
-    getTeamMembers(ids:string){
+    getTeamMembers(id:string){
         var headers = new Headers();
-        console.log("IDS from service==>"+ids);
+        console.log("IDS from service==>"+id);
         headers.append('Content-type','application/json');
-        return this.http.get('teamDetails/getMembers?memberIds[]='+ids,{headers:headers})
+        return this.http.get('teamDetails/getMembers?teamId='+id,{headers:headers})
             .map(response=>response._body);
     }
 

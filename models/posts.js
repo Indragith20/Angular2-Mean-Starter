@@ -1,4 +1,5 @@
 var mongoose  = require('mongoose');
+var AutoIncrement = require('mongoose-sequence');
 mongoose.Promise = global.Promise;
 
 var Schema=mongoose.Schema;
@@ -6,6 +7,7 @@ var Schema=mongoose.Schema;
 var postDetailsSchema = new Schema({
     title: String,
     details:String,
+    teamIds:[],
     postedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -19,6 +21,7 @@ var postDetailsSchema = new Schema({
     }]
 });
 
+postDetailsSchema.plugin(AutoIncrement, {inc_field: 'postId'});
 var Model=mongoose.model('Post',postDetailsSchema);
 
 module.exports = Model;

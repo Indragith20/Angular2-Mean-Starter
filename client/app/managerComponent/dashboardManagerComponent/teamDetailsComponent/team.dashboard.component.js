@@ -22,18 +22,11 @@ var TeamDashBoardComponent = (function () {
         console.log("Selected Team from Team Details Page==>" + JSON.stringify(this.selectedTeam));
     }
     TeamDashBoardComponent.prototype.ngOnInit = function () {
-        // this.memberIds=JSON.stringify(this.selectedTeam.members);
-        // console.log("Member Id ==>"+this.memberIds);
-        for (var i = 0; i < this.selectedTeam.members.length(); i++) {
-            this.memberIds = {
-                members: this.selectedTeam.members[i]
-            };
-        }
-        this.memberIdsToFind = JSON.stringify(this.memberIds);
-        console.log("Member Id ==>" + this.memberIdsToFind);
-        this.dashService.getTeamMembers(this.memberIdsToFind)
+        var _this = this;
+        this.dashService.getTeamMembers(this.selectedTeam.teamId)
             .subscribe(function (data) {
             console.log(data);
+            _this.teamMemberDetails = JSON.parse(data);
         });
     };
     TeamDashBoardComponent = __decorate([

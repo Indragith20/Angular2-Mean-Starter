@@ -1,0 +1,21 @@
+<div class="container">
+    <h3>{{selectedTeam.teamName}}</h3>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Member Name</th>
+                    <th>Contact Number</th>
+                    <th>Member Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let member of teamMemberDetails">
+                    <td>{{member.name}}</td>
+                    <td>{{member.contactNumber}}</td>
+                    <td>{{member.userRole}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

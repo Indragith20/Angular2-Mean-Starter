@@ -25,12 +25,11 @@ export class PostManagerComponent{
             postedBy:this.managerDet._id
             
       };
-    //   console.log("Manager id is ==>"+this.managerDet._id);
-    //   console.log("post details from post page ==>"+JSON.stringify(notifyDetails));
+   
         this.postService.addPost(notifyDetails)
             .subscribe(data=>{
                 console.log(data);
-                //this.loginDet.emit(data);
+                
             });  
     }
 
