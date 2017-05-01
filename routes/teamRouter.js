@@ -9,7 +9,7 @@ router.post('/createTeam',function(req,res){
     var human = new team({
         teamName:req.body.teamName,
         teamDescription:req.body.teamDescription,
-        members:[req.query.managerId]});
+        members:[JSON.parse(req.query.managerId)]});
     var managerId=req.query.managerId;
     console.log("managerId is "+managerId);
     human.save(function(err,resource){
@@ -19,7 +19,7 @@ router.post('/createTeam',function(req,res){
         else{
             console.log("resource Details==>"+resource);
             var teamId=resource.teamId;
-            manager.findByIdAndUpdate({_id:managerId},{$push: {"teams": teamId}},
+            manager.findOneAndUpdate({memberId:managerId},{$push: {"teams": teamId}},
                     {safe: true, upsert: true, new : true},function(err,member){
                if(err){
                     res.send(err).status(501);
@@ -83,7 +83,7 @@ router.post('/addMember',function(req,res){
                     }
                     else{
                         console.log("Updated Member ==>"+member);
-                        team.findOneAndUpdate({teamId:req.query.teamId},{$push:{"members":member._id}},function(err,team){
+                        team.findOneAndUpdate({teamId:req.query.teamId},{$push:{"members":member.memberId}},function(err,team){
                             if(err){
                                 res.send(err).status(501);
                             }

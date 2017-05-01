@@ -32,7 +32,7 @@ export class CreateTeamComponent{
             teamName:this.teamName,
             teamDescription:this.teamDescription
         }
-        this.createService.createNewTeam(teamDetails,this.managerDet._id)
+        this.createService.createNewTeam(teamDetails,this.managerDet.memberId)
             .subscribe(data=> 
                 {
                     var details=JSON.parse(data);

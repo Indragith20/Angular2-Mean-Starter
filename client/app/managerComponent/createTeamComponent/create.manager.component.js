@@ -28,7 +28,7 @@ var CreateTeamComponent = (function () {
             teamName: this.teamName,
             teamDescription: this.teamDescription
         };
-        this.createService.createNewTeam(teamDetails, this.managerDet._id)
+        this.createService.createNewTeam(teamDetails, this.managerDet.memberId)
             .subscribe(function (data) {
             var details = JSON.parse(data);
             if (details) {

@@ -24,12 +24,9 @@ var PostManagerComponent = (function () {
             details: this.postDetails,
             postedBy: this.managerDet._id
         };
-        //   console.log("Manager id is ==>"+this.managerDet._id);
-        //   console.log("post details from post page ==>"+JSON.stringify(notifyDetails));
         this.postService.addPost(notifyDetails)
             .subscribe(function (data) {
             console.log(data);
-            //this.loginDet.emit(data);
         });
     };
     PostManagerComponent = __decorate([
