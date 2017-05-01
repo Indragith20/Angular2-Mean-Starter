@@ -15,8 +15,10 @@ var HomeService = (function () {
     function HomeService(http) {
         this.http = http;
     }
-    HomeService.prototype.getPosts = function () {
-        return this.http.get('post/getPosts')
+    HomeService.prototype.getPosts = function (teamIds) {
+        var headers = new http_1.Headers();
+        headers.append('Content-type', 'application/json');
+        return this.http.get('post/getPosts?teamIds=' + teamIds, { headers: headers })
             .map(function (response) { return response._body; });
     };
     HomeService = __decorate([

@@ -16,13 +16,32 @@ var PostManagerComponent = (function () {
         this.humanService = humanService;
         this.postService = postService;
         this.managerDet = this.humanService.userDet;
-        console.log("Manager Details from posts page==>" + this.managerDet);
+        console.log("Manager Details from posts page==>" + JSON.stringify(this.managerDet));
     }
+    PostManagerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var teams = JSON.stringify(this.managerDet.teams);
+        this.postService.getTeams(teams)
+            .subscribe(function (data) {
+            console.log(data);
+            _this.teams = JSON.parse(data);
+        });
+    };
+    PostManagerComponent.prototype.changeTeam = function (team) {
+        this.selectedTeam = team;
+    };
     PostManagerComponent.prototype.postEnter = function () {
         var notifyDetails = {
             title: this.postTitle,
             details: this.postDetails,
-            postedBy: this.managerDet._id
+            teamDet: {
+                teamName: this.selectedTeam.teamName,
+                teamId: this.selectedTeam.teamId,
+            },
+            postedBy: {
+                name: this.managerDet.name,
+                userRole: this.managerDet.userRole,
+            }
         };
         this.postService.addPost(notifyDetails)
             .subscribe(function (data) {

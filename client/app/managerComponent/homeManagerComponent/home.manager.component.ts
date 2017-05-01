@@ -13,7 +13,7 @@ import {Router} from '@angular/router'
 export class HomeManagerComponent{
     managerDet:any;
     posts:any;
-    teamAvaliable:boolean;
+    teamAvailable:boolean;
     teamNotAvailable:boolean;
 
     constructor(private humanService:HumanService,private homeService:HomeService,private router:Router){
@@ -22,13 +22,15 @@ export class HomeManagerComponent{
     }
     ngOnInit(){
         if(this.managerDet.teams.length>0){
-            this.teamAvaliable=true;
-            // this.homeService.getPosts()
-            //     .subscribe(post=>{
-            //         console.log("origina post===>"+post);
-            //         this.posts=JSON.parse(post);
-            //         console.log("Total Posts from home page ==>"+this.posts);
-            //     });
+            this.teamAvailable=true;
+            let teams=JSON.stringify(this.managerDet.teams);
+            console.log("Team Details==>"+teams);
+            this.homeService.getPosts(teams)
+                .subscribe(post=>{
+                    console.log("origina post===>"+post);
+                    this.posts=JSON.parse(post);
+                    console.log("Total Posts from home page ==>"+this.posts);
+                });
         }
         else{
             this.teamNotAvailable=true;

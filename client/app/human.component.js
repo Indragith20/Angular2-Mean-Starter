@@ -48,11 +48,11 @@ var HumanComponent = (function () {
             .subscribe(function (data) {
             var details = JSON.parse(data);
             console.log(JSON.parse(data));
-            if (details.userRole == "Manager") {
-                _this.humanService.userDet = details;
-                console.log("First Component == >" + _this.humanService.userDet);
-                _this.router.navigate(['/managerMain']);
-            }
+            // if(details.userRole=="Manager"){
+            _this.humanService.userDet = details;
+            console.log("First Component == >" + _this.humanService.userDet);
+            _this.router.navigate(['/managerMain']);
+            // }
         });
     };
     HumanComponent = __decorate([

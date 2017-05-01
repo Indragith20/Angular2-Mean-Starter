@@ -15,9 +15,14 @@ var PostService = (function () {
     function PostService(http) {
         this.http = http;
     }
+    PostService.prototype.getTeams = function (id) {
+        var headers = new http_1.Headers();
+        headers.append('Content-type', 'application/json');
+        return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
+            .map(function (response) { return response._body; });
+    };
     PostService.prototype.addPost = function (postDetails) {
         var headers = new http_1.Headers();
-        console.log("Hi from PostService");
         headers.append('Content-type', 'application/json');
         return this.http.post('post', postDetails, { headers: headers })
             .map(function (response) { return response.json(); });

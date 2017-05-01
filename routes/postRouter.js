@@ -4,7 +4,12 @@ var Model=require('../models/posts');
 
 
 router.post('/',function(req,res){
-    var human = new Model(req.body);
+    var human = new Model({
+        title:req.body.title,
+        details:req.body.details,
+        teamIds:[req.body.teamDet],
+        postedBy:req.body.postedBy
+    });
     human.save(function(err,resource){
         if(err){
             res.send(err).status(501);
@@ -16,7 +21,10 @@ router.post('/',function(req,res){
 });
 
 router.get('/getPosts',function(req,res){
-     Model.find({},function(err,resource){
+    var teams=JSON.parse(req.query.teamIds);
+    console.log("Team Ids from Get Posts==>"+req.query.teamIds);
+    //  Model.find({teamIds:{$elemMatch:{teamId:{$in:[teams]}}}},function(err,resource){
+        Model.find({'teamIds.teamId':{$in:teams}},{_id:0,postId:0,teamIds:0},{sort:{createdAt: -1}},function(err,resource){
         if(err){
             res.send(err).status(501);
         }

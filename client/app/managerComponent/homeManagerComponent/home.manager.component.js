@@ -21,8 +21,17 @@ var HomeManagerComponent = (function () {
         console.log("Manager Details from Home page==>" + this.managerDet);
     }
     HomeManagerComponent.prototype.ngOnInit = function () {
+        var _this = this;
         if (this.managerDet.teams.length > 0) {
-            this.teamAvaliable = true;
+            this.teamAvailable = true;
+            var teams = JSON.stringify(this.managerDet.teams);
+            console.log("Team Details==>" + teams);
+            this.homeService.getPosts(teams)
+                .subscribe(function (post) {
+                console.log("origina post===>" + post);
+                _this.posts = JSON.parse(post);
+                console.log("Total Posts from home page ==>" + _this.posts);
+            });
         }
         else {
             this.teamNotAvailable = true;

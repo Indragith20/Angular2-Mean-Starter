@@ -1,6 +1,19 @@
 <h1>POST PAGE</h1>
 <div class="container">
-        <input type="text" [(ngModel)]="postTitle" placeholder="Title">
-        <textarea [(ngModel)]="postDetails">Enter the Details</textarea>
-        <button (click)="postEnter()"></button>
+        <div class="col-md-12 text-center">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                        <input type="text" class="form-control" [(ngModel)]="postTitle" placeholder="Title">
+                        <br/>
+                        <textarea class="form-control" placeholder="Enter the Details" [(ngModel)]="postDetails">Enter the Details</textarea>
+                        <br/>
+                        <select class="form-control" [(ngModel)]="selectedTeam" (ngModelChange)="changeTeam(selectedTeam)">
+                                <option *ngFor="let team of teams" [ngValue]="team">
+                                {{team.teamName}}
+                                </option>
+                        </select>
+                        <br/>
+                        <button class="btn btn-primary" (click)="postEnter()">Post</button>
+                </div>
+                <div class="col-md-4"></div>
 </div>

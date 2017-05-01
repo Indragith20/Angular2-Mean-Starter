@@ -8,9 +8,17 @@ import 'rxjs/add/operator/map';
 export class PostService{
     constructor(private http : Http){}
 
+
+    getTeams(id:any){
+        var headers = new Headers();
+        headers.append('Content-type','application/json');
+        return this.http.get('team/getTeams?teamIds='+id,{headers:headers})
+            .map(response=>response._body);
+    }
+
     addPost(postDetails:any){
         var headers = new Headers();
-        console.log("Hi from PostService");
+        
         headers.append('Content-type','application/json');
         return this.http.post('post',postDetails,{headers:headers})
                 .map(response => response.json());

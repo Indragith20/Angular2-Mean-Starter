@@ -54,11 +54,11 @@ export class HumanComponent{
             .subscribe(data=>{
                 var details=JSON.parse(data);
                 console.log(JSON.parse(data));
-                if(details.userRole=="Manager"){
+                // if(details.userRole=="Manager"){
                     this.humanService.userDet=details;
                     console.log("First Component == >"+this.humanService.userDet);
                     this.router.navigate(['/managerMain']);
-                }
+                // }
                 
             })
     }

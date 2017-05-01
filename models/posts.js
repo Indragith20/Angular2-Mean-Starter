@@ -8,18 +8,14 @@ var postDetailsSchema = new Schema({
     title: String,
     details:String,
     teamIds:[],
-    postedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    postedBy: [],
     comments: [{
         text: String,
-        postedBy: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    }]
-});
+        postedBy: {}
+    }],
+},
+{timestamps:true}
+);
 
 postDetailsSchema.plugin(AutoIncrement, {inc_field: 'postId'});
 var Model=mongoose.model('Post',postDetailsSchema);

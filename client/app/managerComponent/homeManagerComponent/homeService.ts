@@ -7,8 +7,11 @@ import 'rxjs/add/operator/map';
 export class HomeService{
     constructor(private http : Http){}
 
-    getPosts(){
-        return this.http.get('post/getPosts')
+    getPosts(teamIds:string){
+        var headers = new Headers();
+        
+        headers.append('Content-type','application/json');
+        return this.http.get('post/getPosts?teamIds='+teamIds,{headers:headers})
                 .map(response=> response._body);
     }
 
