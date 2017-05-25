@@ -7,6 +7,7 @@ import {HomeManagerComponent} from './managerComponent/homeManagerComponent/home
 
 import {DashboardManagerComponent} from './managerComponent/dashboardManagerComponent/dashboard.manager.component';
 import {TeamDashBoardComponent} from './managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component';
+import {VacationDashBoardComponent} from './managerComponent/dashboardManagerComponent/vacationTrackerComponent/vacation.dashboard.component';
 
 import {PostManagerComponent} from './managerComponent/postManagerComponent/post.manager.component';
 import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
@@ -30,7 +31,7 @@ const routes: Routes = [
         children:[
             { path: '', pathMatch: 'full' },
             { path: 'teams', component: TeamDashBoardComponent },
-            { path :'vacationtracker', component:DashboardManagerComponent},
+            { path :'vacationtracker', component:VacationDashBoardComponent},
             {path:'activities',component:DashboardManagerComponent}
         ]
     },
