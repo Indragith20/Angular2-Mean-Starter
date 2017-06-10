@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var app_service_1 = require('../../app.service');
-var createService_1 = require('./createService');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var app_service_1 = require("../../app.service");
+var createService_1 = require("./createService");
+var router_1 = require("@angular/router");
 var CreateTeamComponent = (function () {
     function CreateTeamComponent(humanService, createService, router) {
         this.humanService = humanService;
@@ -44,16 +45,16 @@ var CreateTeamComponent = (function () {
         console.log("navigate to add member page");
         this.router.navigate(['/addMember']);
     };
-    CreateTeamComponent = __decorate([
-        core_1.Component({
-            selector: 'createteam',
-            moduleId: module.id,
-            templateUrl: 'createteam.html',
-            providers: [createService_1.CreateService]
-        }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService, createService_1.CreateService, router_1.Router])
-    ], CreateTeamComponent);
     return CreateTeamComponent;
 }());
+CreateTeamComponent = __decorate([
+    core_1.Component({
+        selector: 'createteam',
+        moduleId: module.id,
+        templateUrl: 'createteam.html',
+        providers: [createService_1.CreateService]
+    }),
+    __metadata("design:paramtypes", [app_service_1.HumanService, createService_1.CreateService, router_1.Router])
+], CreateTeamComponent);
 exports.CreateTeamComponent = CreateTeamComponent;
 //# sourceMappingURL=create.manager.component.js.map

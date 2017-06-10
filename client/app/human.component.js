@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var app_service_1 = require('./app.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var app_service_1 = require("./app.service");
 var HumanComponent = (function () {
     function HumanComponent(humanService, router) {
         this.humanService = humanService;
@@ -55,15 +56,15 @@ var HumanComponent = (function () {
             // }
         });
     };
-    HumanComponent = __decorate([
-        core_1.Component({
-            selector: 'human',
-            moduleId: module.id,
-            templateUrl: 'human.html',
-        }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService, router_1.Router])
-    ], HumanComponent);
     return HumanComponent;
 }());
+HumanComponent = __decorate([
+    core_1.Component({
+        selector: 'human',
+        moduleId: module.id,
+        templateUrl: 'human.html',
+    }),
+    __metadata("design:paramtypes", [app_service_1.HumanService, router_1.Router])
+], HumanComponent);
 exports.HumanComponent = HumanComponent;
 //# sourceMappingURL=human.component.js.map

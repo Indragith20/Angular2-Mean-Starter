@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var app_service_1 = require('../../app.service');
-var postService_1 = require('./postService');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var app_service_1 = require("../../app.service");
+var postService_1 = require("./postService");
 var PostManagerComponent = (function () {
     function PostManagerComponent(humanService, postService) {
         this.humanService = humanService;
@@ -48,16 +49,16 @@ var PostManagerComponent = (function () {
             console.log(data);
         });
     };
-    PostManagerComponent = __decorate([
-        core_1.Component({
-            selector: 'post',
-            moduleId: module.id,
-            templateUrl: 'post.html',
-            providers: [postService_1.PostService]
-        }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService, postService_1.PostService])
-    ], PostManagerComponent);
     return PostManagerComponent;
 }());
+PostManagerComponent = __decorate([
+    core_1.Component({
+        selector: 'post',
+        moduleId: module.id,
+        templateUrl: 'post.html',
+        providers: [postService_1.PostService]
+    }),
+    __metadata("design:paramtypes", [app_service_1.HumanService, postService_1.PostService])
+], PostManagerComponent);
 exports.PostManagerComponent = PostManagerComponent;
 //# sourceMappingURL=post.manager.component.js.map

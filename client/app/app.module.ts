@@ -2,6 +2,10 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {ScheduleModule,CalendarModule,CheckboxModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/components/dialog/dialog'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import {BrowserAnimationsModule} from '@angular/animations';
 
 import {routing} from './app.routes';
 
@@ -20,7 +24,7 @@ import {AddMemberComponent} from  './managerComponent/addMemberComponent/add.mem
 import {HumanService} from './app.service';
 
 @NgModule({
-  imports: [ BrowserModule,HttpModule,FormsModule,routing ],
+  imports: [ BrowserModule,HttpModule,FormsModule,routing,ScheduleModule,DialogModule,CalendarModule,CheckboxModule,BrowserAnimationsModule],
   declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,DashboardManagerComponent,TeamDashBoardComponent,PostManagerComponent,CreateTeamComponent,AddMemberComponent,VacationDashBoardComponent],
   providers: [HumanService],
   bootstrap: [ AppComponent ]

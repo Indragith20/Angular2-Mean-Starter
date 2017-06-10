@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var app_service_1 = require('../../app.service');
-var addService_1 = require('./addService');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var app_service_1 = require("../../app.service");
+var addService_1 = require("./addService");
 var AddMemberComponent = (function () {
     function AddMemberComponent(router, humanService, addService) {
         this.router = router;
@@ -47,16 +48,16 @@ var AddMemberComponent = (function () {
             console.log(data);
         });
     };
-    AddMemberComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'addMember',
-            templateUrl: 'addMember.html',
-            providers: [addService_1.AddService]
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, app_service_1.HumanService, addService_1.AddService])
-    ], AddMemberComponent);
     return AddMemberComponent;
 }());
+AddMemberComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'addMember',
+        templateUrl: 'addMember.html',
+        providers: [addService_1.AddService]
+    }),
+    __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, addService_1.AddService])
+], AddMemberComponent);
 exports.AddMemberComponent = AddMemberComponent;
 //# sourceMappingURL=add.member.component.js.map

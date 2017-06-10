@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
 var CreateService = (function () {
     function CreateService(http) {
         this.http = http;
@@ -21,11 +22,11 @@ var CreateService = (function () {
         return this.http.post('team/createTeam?managerId=' + managerId, postData, { headers: headers })
             .map(function (response) { return response._body; });
     };
-    CreateService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], CreateService);
     return CreateService;
 }());
+CreateService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], CreateService);
 exports.CreateService = CreateService;
 //# sourceMappingURL=createService.js.map

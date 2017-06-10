@@ -1,13 +1,15 @@
 "use strict";
-var router_1 = require('@angular/router');
-var human_component_1 = require('./human.component');
-var manager_component_1 = require('./managerComponent/manager.component');
-var home_manager_component_1 = require('./managerComponent/homeManagerComponent/home.manager.component');
-var dashboard_manager_component_1 = require('./managerComponent/dashboardManagerComponent/dashboard.manager.component');
-var team_dashboard_component_1 = require('./managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component');
-var post_manager_component_1 = require('./managerComponent/postManagerComponent/post.manager.component');
-var create_manager_component_1 = require('./managerComponent/createTeamComponent/create.manager.component');
-var add_member_component_1 = require('./managerComponent/addMemberComponent/add.member.component');
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = require("@angular/router");
+var human_component_1 = require("./human.component");
+var manager_component_1 = require("./managerComponent/manager.component");
+var home_manager_component_1 = require("./managerComponent/homeManagerComponent/home.manager.component");
+var dashboard_manager_component_1 = require("./managerComponent/dashboardManagerComponent/dashboard.manager.component");
+var team_dashboard_component_1 = require("./managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component");
+var vacation_dashboard_component_1 = require("./managerComponent/dashboardManagerComponent/vacationTrackerComponent/vacation.dashboard.component");
+var post_manager_component_1 = require("./managerComponent/postManagerComponent/post.manager.component");
+var create_manager_component_1 = require("./managerComponent/createTeamComponent/create.manager.component");
+var add_member_component_1 = require("./managerComponent/addMemberComponent/add.member.component");
 var routes = [
     // map '/persons' to the people list component
     {
@@ -24,9 +26,9 @@ var routes = [
                 path: 'dashboard',
                 component: dashboard_manager_component_1.DashboardManagerComponent,
                 children: [
-                    { path: '', pathMatch: 'full' },
+                    { path: '', redirectTo: 'activities', pathMatch: 'full' },
                     { path: 'teams', component: team_dashboard_component_1.TeamDashBoardComponent },
-                    { path: 'vacationtracker', component: dashboard_manager_component_1.DashboardManagerComponent },
+                    { path: 'vacationtracker', component: vacation_dashboard_component_1.VacationDashBoardComponent },
                     { path: 'activities', component: dashboard_manager_component_1.DashboardManagerComponent }
                 ]
             },

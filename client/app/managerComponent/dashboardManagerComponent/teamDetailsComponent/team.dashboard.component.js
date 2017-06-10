@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var app_service_1 = require('../../../app.service');
-var dash_service_1 = require('../dash.service');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var app_service_1 = require("../../../app.service");
+var dash_service_1 = require("../dash.service");
 var TeamDashBoardComponent = (function () {
     function TeamDashBoardComponent(router, humanService, dashService) {
         this.router = router;
@@ -29,15 +30,15 @@ var TeamDashBoardComponent = (function () {
             _this.teamMemberDetails = JSON.parse(data);
         });
     };
-    TeamDashBoardComponent = __decorate([
-        core_1.Component({
-            selector: 'team-details',
-            moduleId: module.id,
-            templateUrl: 'teamDetails.html',
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
-    ], TeamDashBoardComponent);
     return TeamDashBoardComponent;
 }());
+TeamDashBoardComponent = __decorate([
+    core_1.Component({
+        selector: 'team-details',
+        moduleId: module.id,
+        templateUrl: 'teamDetails.html',
+    }),
+    __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
+], TeamDashBoardComponent);
 exports.TeamDashBoardComponent = TeamDashBoardComponent;
 //# sourceMappingURL=team.dashboard.component.js.map

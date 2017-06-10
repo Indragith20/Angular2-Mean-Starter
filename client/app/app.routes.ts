@@ -29,7 +29,7 @@ const routes: Routes = [
         path: 'dashboard', 
         component: DashboardManagerComponent,
         children:[
-            { path: '', pathMatch: 'full' },
+            { path: '', redirectTo: 'activities',pathMatch: 'full' },
             { path: 'teams', component: TeamDashBoardComponent },
             { path :'vacationtracker', component:VacationDashBoardComponent},
             {path:'activities',component:DashboardManagerComponent}

@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var app_service_1 = require('../../app.service');
-var homeService_1 = require('./homeService');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var app_service_1 = require("../../app.service");
+var homeService_1 = require("./homeService");
+var router_1 = require("@angular/router");
 var HomeManagerComponent = (function () {
     function HomeManagerComponent(humanService, homeService, router) {
         this.humanService = humanService;
@@ -40,16 +41,16 @@ var HomeManagerComponent = (function () {
     HomeManagerComponent.prototype.createTeam = function () {
         this.router.navigate(['/managerMain/createteam']);
     };
-    HomeManagerComponent = __decorate([
-        core_1.Component({
-            selector: 'home',
-            moduleId: module.id,
-            templateUrl: 'home.html',
-            providers: [homeService_1.HomeService]
-        }), 
-        __metadata('design:paramtypes', [app_service_1.HumanService, homeService_1.HomeService, router_1.Router])
-    ], HomeManagerComponent);
     return HomeManagerComponent;
 }());
+HomeManagerComponent = __decorate([
+    core_1.Component({
+        selector: 'home',
+        moduleId: module.id,
+        templateUrl: 'home.html',
+        providers: [homeService_1.HomeService]
+    }),
+    __metadata("design:paramtypes", [app_service_1.HumanService, homeService_1.HomeService, router_1.Router])
+], HomeManagerComponent);
 exports.HomeManagerComponent = HomeManagerComponent;
 //# sourceMappingURL=home.manager.component.js.map
