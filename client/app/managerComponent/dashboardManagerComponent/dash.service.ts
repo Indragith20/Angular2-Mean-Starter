@@ -9,6 +9,8 @@ export class DashService{
 
     constructor(private http : Http){}
 
+    /*****************************************Team Details Dashboard ********************************************************** */
+    
     getTeams(id:any){
         var headers = new Headers();
         headers.append('Content-type','application/json');
@@ -25,10 +27,18 @@ export class DashService{
             .map(response=>response._body);
     }
 
-    // changeTeam(team:any){
-        
-    //     this.teamSelected=team;
-    //     console.log("From Service page==>"+this.teamSelected);
-    // }
+
+    /************************************************************************************************************** */
+
+
+    /************************************************Vacation Dashoboard************************************************************** */
+
+    saveNewEvent(){
+        var headers = new Headers();
+        headers.append('Content-type','application/json');
+        return this.http.post('eventDetails/saveEvent?teamId='+id,{headers:headers})
+            .map(response=>response._body);
+    }
+    
 
 }

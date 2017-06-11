@@ -1,12 +1,18 @@
 import {Component,ChangeDetectorRef } from '@angular/core';
+import {DashService} from '../dash.service';
+import {HumanService} from '../../../app.service';
 
 @Component({
     moduleId:module.id,
     selector:'vacation-dashboard',
-    templateUrl:'./vacation.html'
+    templateUrl:'./vacation.html',
+    providers:[DashService]
 })
 
 export class VacationDashBoardComponent{
+    managerDet:any;
+    selectedTeam:any;
+
     events: any[];
     headerConfig:any;
 
@@ -16,7 +22,11 @@ export class VacationDashBoardComponent{
     /******************************************************************************************************** */
 
 
-    constructor(private cd: ChangeDetectorRef) { }
+    constructor(private dashService:DashService,private humanService:HumanService,private cd: ChangeDetectorRef) { 
+        this.managerDet=this.humanService.userDet;
+        this.selectedTeam=this.dashService.teamSelected;
+        console.log("Selected Team from Team Details Page==>"+JSON.stringify(this.selectedTeam));
+    }
 
 
 
