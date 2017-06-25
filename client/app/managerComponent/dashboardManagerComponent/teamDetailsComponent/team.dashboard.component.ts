@@ -1,6 +1,6 @@
 import {Component,Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {HumanService} from '../../../app.service';
+    import {HumanService} from '../../../app.service';
 import {DashService} from '../dash.service';
 
 @Component({

@@ -6,7 +6,6 @@ import {HumanService} from '../../../app.service';
     moduleId:module.id,
     selector:'vacation-dashboard',
     templateUrl:'./vacation.html',
-    providers:[DashService]
 })
 
 export class VacationDashBoardComponent{
@@ -80,9 +79,14 @@ export class VacationDashBoardComponent{
         }
         //new
         else {
-            this.event.id = this.idGen++;
+            //this.event.id = this.idGen++;
             this.events.push(this.event);
-            this.event = null;
+            console.log("Event Details are===>"+JSON.stringify(this.event));
+            this.dashService.saveNewEvent(this.event,this.selectedTeam,this.managerDet).subscribe(data=>{
+                console.log(data);
+                this.event = null;
+            });
+            
         }
         
         this.dialogVisible = false;
@@ -118,35 +122,19 @@ export class VacationDashBoardComponent{
 		};
 
 
-        this.events = [
-            {
-                "title": "All Day Event",
-                "start": "2016-01-01"
-            },
-            {
-                "title": "Long Event",
-                "start": "2016-01-07",
-                "end": "2016-01-10"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2016-01-09T16:00:00"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2016-01-16T16:00:00"
-            },
-            {
-                "title": "Conference",
-                "start": "2016-01-11",
-                "end": "2016-01-13"
-            }
-        ];
+        this.dashService.getEvents(this.selectedTeam.teamId,this.managerDet.userRole).subscribe(events => 
+                {
+                    this.events = events;
+                    console.log("Events Generated==>"+this.events);
+                });
+
+       
     }
 }   
 
 export class MyEvent {
     id: number;
+    memberName:string;
     title: string;
     start: string;
     end: string;

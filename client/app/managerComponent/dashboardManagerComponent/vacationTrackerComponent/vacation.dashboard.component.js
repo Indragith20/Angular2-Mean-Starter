@@ -10,12 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var dash_service_1 = require("../dash.service");
+var app_service_1 = require("../../../app.service");
 var VacationDashBoardComponent = (function () {
     /******************************************************************************************************** */
-    function VacationDashBoardComponent(cd) {
+    function VacationDashBoardComponent(dashService, humanService, cd) {
+        this.dashService = dashService;
+        this.humanService = humanService;
         this.cd = cd;
         this.dialogVisible = false;
         this.idGen = 100;
+        this.managerDet = this.humanService.userDet;
+        this.selectedTeam = this.dashService.teamSelected;
+        console.log("Selected Team from Team Details Page==>" + JSON.stringify(this.selectedTeam));
     }
     VacationDashBoardComponent.prototype.handleDayClick = function (event) {
         this.event = new MyEvent();
@@ -42,6 +49,7 @@ var VacationDashBoardComponent = (function () {
         this.dialogVisible = true;
     };
     VacationDashBoardComponent.prototype.saveEvent = function () {
+        var _this = this;
         //update
         if (this.event.id) {
             var index = this.findEventIndexById(this.event.id);
@@ -52,7 +60,11 @@ var VacationDashBoardComponent = (function () {
         else {
             this.event.id = this.idGen++;
             this.events.push(this.event);
-            this.event = null;
+            console.log("Event Details are===>" + JSON.stringify(this.event));
+            this.dashService.saveNewEvent(this.event, this.selectedTeam, this.managerDet).subscribe(function (data) {
+                console.log(data);
+                _this.event = null;
+            });
         }
         this.dialogVisible = false;
     };
@@ -75,35 +87,16 @@ var VacationDashBoardComponent = (function () {
     };
     /********************************************************************************************************** */
     VacationDashBoardComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.headerConfig = {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         };
-        this.events = [
-            {
-                "title": "All Day Event",
-                "start": "2016-01-01"
-            },
-            {
-                "title": "Long Event",
-                "start": "2016-01-07",
-                "end": "2016-01-10"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2016-01-09T16:00:00"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2016-01-16T16:00:00"
-            },
-            {
-                "title": "Conference",
-                "start": "2016-01-11",
-                "end": "2016-01-13"
-            }
-        ];
+        this.dashService.getEvents(this.selectedTeam.teamId, this.managerDet.userRole).subscribe(function (events) {
+            _this.events = events;
+            console.log("Events Generated==>" + _this.events);
+        });
     };
     return VacationDashBoardComponent;
 }());
@@ -111,9 +104,9 @@ VacationDashBoardComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'vacation-dashboard',
-        templateUrl: './vacation.html'
+        templateUrl: './vacation.html',
     }),
-    __metadata("design:paramtypes", [core_1.ChangeDetectorRef])
+    __metadata("design:paramtypes", [dash_service_1.DashService, app_service_1.HumanService, core_1.ChangeDetectorRef])
 ], VacationDashBoardComponent);
 exports.VacationDashBoardComponent = VacationDashBoardComponent;
 var MyEvent = (function () {

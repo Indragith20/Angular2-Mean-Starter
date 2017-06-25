@@ -16,6 +16,7 @@ var DashService = (function () {
     function DashService(http) {
         this.http = http;
     }
+    /*****************************************Team Details Dashboard ********************************************************** */
     DashService.prototype.getTeams = function (id) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
@@ -28,6 +29,31 @@ var DashService = (function () {
         headers.append('Content-type', 'application/json');
         return this.http.get('teamDetails/getMembers?teamId=' + id, { headers: headers })
             .map(function (response) { return response._body; });
+    };
+    /************************************************************************************************************** */
+    /************************************************Vacation Dashoboard************************************************************** */
+    DashService.prototype.saveNewEvent = function (event, team, member) {
+        var headers = new http_1.Headers();
+        var eventDet = {
+            eventName: event.title,
+            eventStartDate: event.start,
+            eventEndDate: event.end,
+            teamName: team.teamName,
+            teamId: team.teamId,
+            memberId: member.memberId,
+            memberName: member.name
+        };
+        console.log("event Details==>" + JSON.stringify(eventDet));
+        headers.append('Content-type', 'application/json');
+        return this.http.post('events/saveEvent?event=' + JSON.stringify(eventDet), { headers: headers })
+            .map(function (response) { return response._body; });
+    };
+    DashService.prototype.getEvents = function (id, role) {
+        var headers = new http_1.Headers();
+        console.log("IDS from service==>" + id);
+        headers.append('Content-type', 'application/json');
+        return this.http.get('events/getEvents?teamId=' + id, { headers: headers })
+            .map(function (response) { return response.json(); });
     };
     return DashService;
 }());

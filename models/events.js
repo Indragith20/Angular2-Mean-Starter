@@ -17,8 +17,9 @@ var eventDetailsSchema = new Schema({
         teamId:Number,
         teamName:String   
     }
+    
 
-});
+},{timestamps:true});
 
 eventDetailsSchema.plugin(AutoIncrement, {inc_field: 'eventId'});
 
