@@ -66,11 +66,11 @@ export class DashService{
     }
 
 
-    updateEvent(event:any,,team:any,member:any){
+    updateEvent(event:any,team:any,member:any){
         var headers=new Headers();
         headers.append('Content-type','application/json');
         var eventDet={
-            eventId:event.eventId,
+            eventId:event.id,
             eventName:event.title,
             eventStartDate:event.start,
             eventEndDate:event.end,
@@ -79,8 +79,8 @@ export class DashService{
             memberId:member.memberId,
             memberName:member.name
            };
-        return this.http.post('events/saveEvent?event='+JSON.stringify(eventDet),{headers:headers})
-            .map(response=>response.json());   
+        return this.http.post('events/updateEvent?event='+JSON.stringify(eventDet),{headers:headers})
+            .map(response=>response._body);   
     
     }
     

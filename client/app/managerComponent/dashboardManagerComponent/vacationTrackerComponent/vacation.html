@@ -1,6 +1,6 @@
 
-<div class="container">
-    
+<div class="container" *ngIf="eventsAvailable">
+
 
 <p-schedule [events]="events" [header]="header" [eventLimit]="4" [editable]="true"
             (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
@@ -34,4 +34,9 @@
     </p-footer>
 </p-dialog> 
 
+</div>
+
+
+<div class="container" *ngIf="eventsNotAvailable">
+    <h3>Loading...</h3>   
 </div>

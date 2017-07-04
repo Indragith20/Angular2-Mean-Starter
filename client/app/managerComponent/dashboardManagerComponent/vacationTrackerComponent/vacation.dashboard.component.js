@@ -18,6 +18,9 @@ var VacationDashBoardComponent = (function () {
         this.dashService = dashService;
         this.humanService = humanService;
         this.cd = cd;
+        this.eventsNotAvailable = true;
+        this.eventsAvailable = false;
+        this.uEvents = [];
         this.dialogVisible = false;
         this.idGen = 100;
         this.managerDet = this.humanService.userDet;
@@ -29,7 +32,7 @@ var VacationDashBoardComponent = (function () {
         this.event.start = event.date.format();
         this.dialogVisible = true;
         //trigger detection manually as somehow only moving the mouse quickly after click triggers the automatic detection
-        this.cd.detectChanges();
+        //this.cd.detectChanges();
     };
     VacationDashBoardComponent.prototype.handleEventClick = function (e) {
         this.event = new MyEvent();
@@ -51,19 +54,23 @@ var VacationDashBoardComponent = (function () {
     VacationDashBoardComponent.prototype.saveEvent = function () {
         var _this = this;
         //update
+        this.eventsAvailable = false;
+        this.eventsNotAvailable = true;
         if (this.event.id) {
             var index = this.findEventIndexById(this.event.id);
             if (index >= 0) {
-                this.events[index] = this.event;
+                this.dashService.updateEvent(this.event, this.selectedTeam, this.managerDet).subscribe(function (data) {
+                    _this.getEventFun();
+                    //this.cd.detectChanges();
+                });
             }
         }
         else {
-            this.event.id = this.idGen++;
-            this.events.push(this.event);
             console.log("Event Details are===>" + JSON.stringify(this.event));
             this.dashService.saveNewEvent(this.event, this.selectedTeam, this.managerDet).subscribe(function (data) {
                 console.log(data);
-                _this.event = null;
+                _this.getEventFun();
+                //this.cd.detectChanges();
             });
         }
         this.dialogVisible = false;
@@ -86,17 +93,24 @@ var VacationDashBoardComponent = (function () {
         return index;
     };
     /********************************************************************************************************** */
-    VacationDashBoardComponent.prototype.ngOnInit = function () {
+    VacationDashBoardComponent.prototype.getEventFun = function () {
         var _this = this;
+        this.dashService.getEvents(this.selectedTeam.teamId, this.managerDet.userRole).subscribe(function (data) {
+            _this.eventsAvailable = true;
+            _this.eventsNotAvailable = false;
+            _this.events = data;
+            console.log("Events Generated==>" + JSON.stringify(_this.events));
+            //this.cd.detectChanges();
+        });
+        //return this.events;        
+    };
+    VacationDashBoardComponent.prototype.ngOnInit = function () {
         this.headerConfig = {
             left: 'prev,next today',
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         };
-        this.dashService.getEvents(this.selectedTeam.teamId, this.managerDet.userRole).subscribe(function (events) {
-            _this.events = events;
-            console.log("Events Generated==>" + _this.events);
-        });
+        this.getEventFun();
     };
     return VacationDashBoardComponent;
 }());

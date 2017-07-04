@@ -55,6 +55,22 @@ var DashService = (function () {
         return this.http.get('events/getEvents?teamId=' + id, { headers: headers })
             .map(function (response) { return response.json(); });
     };
+    DashService.prototype.updateEvent = function (event, team, member) {
+        var headers = new http_1.Headers();
+        headers.append('Content-type', 'application/json');
+        var eventDet = {
+            eventId: event.id,
+            eventName: event.title,
+            eventStartDate: event.start,
+            eventEndDate: event.end,
+            teamName: team.teamName,
+            teamId: team.teamId,
+            memberId: member.memberId,
+            memberName: member.name
+        };
+        return this.http.post('events/updateEvent?event=' + JSON.stringify(eventDet), { headers: headers })
+            .map(function (response) { return response._body; });
+    };
     return DashService;
 }());
 DashService = __decorate([

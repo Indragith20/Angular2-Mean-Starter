@@ -1,4 +1,4 @@
-import {Component,ChangeDetectorRef } from '@angular/core';
+import {Component,ChangeDetectorRef,OnInit } from '@angular/core';
 import {DashService} from '../dash.service';
 import {HumanService} from '../../../app.service';
 
@@ -8,11 +8,15 @@ import {HumanService} from '../../../app.service';
     templateUrl:'./vacation.html',
 })
 
-export class VacationDashBoardComponent{
+export class VacationDashBoardComponent implements OnInit{
     managerDet:any;
     selectedTeam:any;
 
+    eventsNotAvailable:boolean=true;
+    eventsAvailable:boolean=false;
+
     events: any[];
+    uEvents: any=[];
     headerConfig:any;
 
 
@@ -39,13 +43,14 @@ export class VacationDashBoardComponent{
     
     idGen: number = 100;
 
+   
     handleDayClick(event:any) {
         this.event = new MyEvent();
         this.event.start = event.date.format();
         this.dialogVisible = true;
         
         //trigger detection manually as somehow only moving the mouse quickly after click triggers the automatic detection
-        this.cd.detectChanges();
+        //this.cd.detectChanges();
     }
     
     handleEventClick(e) {
@@ -71,20 +76,24 @@ export class VacationDashBoardComponent{
     
     saveEvent() {
         //update
+        this.eventsAvailable=false;
+        this.eventsNotAvailable=true;
         if(this.event.id) {
             let index: number = this.findEventIndexById(this.event.id);
             if(index >= 0) {
-                this.events[index] = this.event;
+                this.dashService.updateEvent(this.event,this.selectedTeam,this.managerDet).subscribe(data=>{
+                this.getEventFun();
+                //this.cd.detectChanges();
+                })
             }
         }
         //new
         else {
-            //this.event.id = this.idGen++;
-            this.events.push(this.event);
             console.log("Event Details are===>"+JSON.stringify(this.event));
             this.dashService.saveNewEvent(this.event,this.selectedTeam,this.managerDet).subscribe(data=>{
                 console.log(data);
-                this.event = null;
+                this.getEventFun();
+                //this.cd.detectChanges();
             });
             
         }
@@ -114,22 +123,29 @@ export class VacationDashBoardComponent{
 
     /********************************************************************************************************** */
 
+    public getEventFun():void{
+            this.dashService.getEvents(this.selectedTeam.teamId,this.managerDet.userRole).subscribe(data => 
+                {
+                    this.eventsAvailable=true;
+                    this.eventsNotAvailable=false;
+                    this.events = data;
+                    console.log("Events Generated==>"+JSON.stringify(this.events));
+                    //this.cd.detectChanges();
+                    
+                });
+
+        //return this.events;        
+    }
+
     ngOnInit() {
         this.headerConfig = {
 			left: 'prev,next today',
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay'
 		};
-
-
-        this.dashService.getEvents(this.selectedTeam.teamId,this.managerDet.userRole).subscribe(events => 
-                {
-                    this.events = events;
-                    console.log("Events Generated==>"+this.events);
-                });
-
-       
-    }
+        this.getEventFun();
+     }
+    
 }   
 
 export class MyEvent {

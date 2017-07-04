@@ -66,5 +66,35 @@ router.get('/getEvents',function(req,res){
     });
 })
 
+//Handler for updating the events
+router.post('/updateEvent',function(req,res){
+    var parsedEvent=JSON.parse(req.query.event);
+    //console.log("eventts In the back==>"+req.query.event);
+    var eventToUpdate={
+        eventName:parsedEvent.eventName,
+        eventStartDate:parsedEvent.eventStartDate,
+        eventEndDate:parsedEvent.eventEndDate,
+        eventDescription:parsedEvent.eventName,
+        membersDetails:{
+            memberId:parsedEvent.memberId,
+            memberName:parsedEvent.memberName
+        },
+        teamDetails:{
+             teamId:parsedEvent.teamId,
+            teamName:parsedEvent.teamName 
+        }
+    };
+
+    eventModel.findOneAndUpdate({eventId:parsedEvent.eventId},eventToUpdate,function(err,updatedEvent){
+        if(err){
+            res.send(err).status(501);
+        }
+        else{
+            console.log("Upsdes event==>"+updatedEvent);
+            res.send(updatedEvent).status(200);
+        }
+    });
+});
+
 
 module.exports = router;
