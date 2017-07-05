@@ -76,9 +76,16 @@ var VacationDashBoardComponent = (function () {
         this.dialogVisible = false;
     };
     VacationDashBoardComponent.prototype.deleteEvent = function () {
+        var _this = this;
+        this.eventsAvailable = false;
+        this.eventsNotAvailable = true;
         var index = this.findEventIndexById(this.event.id);
         if (index >= 0) {
-            this.events.splice(index, 1);
+            //this.events.splice(index, 1);
+            this.dashService.deleteEvent(this.event.id).subscribe(function (data) {
+                console.log(data);
+                _this.getEventFun();
+            });
         }
         this.dialogVisible = false;
     };

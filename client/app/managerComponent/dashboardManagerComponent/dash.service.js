@@ -71,6 +71,12 @@ var DashService = (function () {
         return this.http.post('events/updateEvent?event=' + JSON.stringify(eventDet), { headers: headers })
             .map(function (response) { return response._body; });
     };
+    DashService.prototype.deleteEvent = function (eventId) {
+        var headers = new http_1.Headers();
+        headers.append('content-type', 'application/json');
+        return this.http.post('events/deleteEvent?eventId=' + eventId, { headers: headers })
+            .map(function (response) { return response._body; });
+    };
     return DashService;
 }());
 DashService = __decorate([

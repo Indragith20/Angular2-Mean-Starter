@@ -83,6 +83,15 @@ export class DashService{
             .map(response=>response._body);   
     
     }
+
+
+    deleteEvent(eventId:number){
+        var headers=new Headers();
+        headers.append('content-type','application/json');
+
+        return this.http.post('events/deleteEvent?eventId='+eventId,{headers:headers})
+                    .map(response=>response._body);
+    }
     
 
 }

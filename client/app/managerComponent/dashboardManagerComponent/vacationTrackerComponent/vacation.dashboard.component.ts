@@ -102,9 +102,15 @@ export class VacationDashBoardComponent implements OnInit{
     }
     
     deleteEvent() {
+        this.eventsAvailable=false;
+        this.eventsNotAvailable=true;
         let index: number = this.findEventIndexById(this.event.id);
         if(index >= 0) {
-            this.events.splice(index, 1);
+            //this.events.splice(index, 1);
+            this.dashService.deleteEvent(this.event.id).subscribe(data=>{
+                console.log(data);
+                this.getEventFun();
+            });
         }
         this.dialogVisible = false;
     }

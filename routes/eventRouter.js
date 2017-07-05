@@ -97,4 +97,17 @@ router.post('/updateEvent',function(req,res){
 });
 
 
+//Handler for deleting the events
+router.post('/deleteEvent',function(req,res){
+    var eventToDelete=req.query.eventId;
+    eventModel.remove({eventId:eventToDelete},function(err,data){
+        if(err){
+            res.send(err).status(501);
+        }
+        else{
+            res.send(data).status(200);
+        }
+    });
+});
+
 module.exports = router;
