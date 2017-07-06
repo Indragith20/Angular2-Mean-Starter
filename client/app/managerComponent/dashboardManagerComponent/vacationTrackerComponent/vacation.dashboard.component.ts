@@ -83,7 +83,6 @@ export class VacationDashBoardComponent implements OnInit{
             if(index >= 0) {
                 this.dashService.updateEvent(this.event,this.selectedTeam,this.managerDet).subscribe(data=>{
                 this.getEventFun();
-                //this.cd.detectChanges();
                 })
             }
         }
@@ -93,7 +92,6 @@ export class VacationDashBoardComponent implements OnInit{
             this.dashService.saveNewEvent(this.event,this.selectedTeam,this.managerDet).subscribe(data=>{
                 console.log(data);
                 this.getEventFun();
-                //this.cd.detectChanges();
             });
             
         }
@@ -104,15 +102,10 @@ export class VacationDashBoardComponent implements OnInit{
     deleteEvent() {
         this.eventsAvailable=false;
         this.eventsNotAvailable=true;
-        let index: number = this.findEventIndexById(this.event.id);
-        if(index >= 0) {
-            //this.events.splice(index, 1);
-            this.dashService.deleteEvent(this.event.id).subscribe(data=>{
+        this.dashService.deleteEvent(this.event.id).subscribe(data=>{
                 console.log(data);
                 this.getEventFun();
             });
-        }
-        this.dialogVisible = false;
     }
     
     findEventIndexById(id: number) {
@@ -136,11 +129,7 @@ export class VacationDashBoardComponent implements OnInit{
                     this.eventsNotAvailable=false;
                     this.events = data;
                     console.log("Events Generated==>"+JSON.stringify(this.events));
-                    //this.cd.detectChanges();
-                    
                 });
-
-        //return this.events;        
     }
 
     ngOnInit() {

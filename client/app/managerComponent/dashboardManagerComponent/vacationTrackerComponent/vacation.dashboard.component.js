@@ -61,7 +61,6 @@ var VacationDashBoardComponent = (function () {
             if (index >= 0) {
                 this.dashService.updateEvent(this.event, this.selectedTeam, this.managerDet).subscribe(function (data) {
                     _this.getEventFun();
-                    //this.cd.detectChanges();
                 });
             }
         }
@@ -70,7 +69,6 @@ var VacationDashBoardComponent = (function () {
             this.dashService.saveNewEvent(this.event, this.selectedTeam, this.managerDet).subscribe(function (data) {
                 console.log(data);
                 _this.getEventFun();
-                //this.cd.detectChanges();
             });
         }
         this.dialogVisible = false;
@@ -79,15 +77,10 @@ var VacationDashBoardComponent = (function () {
         var _this = this;
         this.eventsAvailable = false;
         this.eventsNotAvailable = true;
-        var index = this.findEventIndexById(this.event.id);
-        if (index >= 0) {
-            //this.events.splice(index, 1);
-            this.dashService.deleteEvent(this.event.id).subscribe(function (data) {
-                console.log(data);
-                _this.getEventFun();
-            });
-        }
-        this.dialogVisible = false;
+        this.dashService.deleteEvent(this.event.id).subscribe(function (data) {
+            console.log(data);
+            _this.getEventFun();
+        });
     };
     VacationDashBoardComponent.prototype.findEventIndexById = function (id) {
         var index = -1;
@@ -107,9 +100,7 @@ var VacationDashBoardComponent = (function () {
             _this.eventsNotAvailable = false;
             _this.events = data;
             console.log("Events Generated==>" + JSON.stringify(_this.events));
-            //this.cd.detectChanges();
         });
-        //return this.events;        
     };
     VacationDashBoardComponent.prototype.ngOnInit = function () {
         this.headerConfig = {
