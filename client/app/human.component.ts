@@ -52,10 +52,12 @@ export class HumanComponent{
     loginUser(name:any,pass:any){
         this.humanService.autheticateUser(name,pass)
             .subscribe(data=>{
+                console.log(data);
                 var details=JSON.parse(data);
-                console.log(JSON.parse(data));
+                console.log(details);
                 // if(details.userRole=="Manager"){
-                    this.humanService.userDet=details;
+                    this.humanService.userDet=details.loggedUserDet;
+                    localStorage.setItem('auth-token', details.token);
                     console.log("First Component == >"+this.humanService.userDet);
                     this.router.navigate(['/managerMain']);
                 // }

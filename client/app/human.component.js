@@ -47,10 +47,12 @@ var HumanComponent = (function () {
         var _this = this;
         this.humanService.autheticateUser(name, pass)
             .subscribe(function (data) {
+            console.log(data);
             var details = JSON.parse(data);
-            console.log(JSON.parse(data));
+            console.log(details);
             // if(details.userRole=="Manager"){
-            _this.humanService.userDet = details;
+            _this.humanService.userDet = details.loggedUserDet;
+            localStorage.setItem('auth-token', details.token);
             console.log("First Component == >" + _this.humanService.userDet);
             _this.router.navigate(['/managerMain']);
             // }

@@ -22,11 +22,12 @@ import {PostManagerComponent} from './managerComponent/postManagerComponent/post
 import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
 import {AddMemberComponent} from  './managerComponent/addMemberComponent/add.member.component';
 import {HumanService} from './app.service';
+import {AuthService} from './auth.service';
 
 @NgModule({
   imports: [ BrowserModule,HttpModule,FormsModule,routing,ScheduleModule,DialogModule,CalendarModule,CheckboxModule,BrowserAnimationsModule],
   declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,DashboardManagerComponent,TeamDashBoardComponent,PostManagerComponent,CreateTeamComponent,AddMemberComponent,VacationDashBoardComponent],
-  providers: [HumanService],
+  providers: [HumanService,AuthService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
