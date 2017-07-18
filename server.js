@@ -1,6 +1,4 @@
 var port = 4000;
-// var DB ="mongodb://localhost/profileManager"
-
 
 var express = require('express');
 var mongoose = require('mongoose');
@@ -27,6 +25,30 @@ app.use(bodyparser.urlencoded({
     extended:true
 }));
 
+
+var verifyUrl=function(req,res,next){
+     var token=req.body.token || req.query.token || req.headers['x-access-token'] || req.body.headers.Authorization[0];
+        console.log("Inside the authetication part token==>"+token);
+        if(token){
+            jwt.verify(token,req.app.get('superSecret'),function(err,decoded){
+                if(err){
+                    return res.json({ success: false, message: 'Failed to authenticate token.' });
+                }
+                else{
+                    req.decoded=decoded;
+                    next();
+                }
+            });
+        }
+        else{
+            return res.status(403).send({ 
+                success: false, 
+                message: 'No token provided.' 
+            });
+        }
+
+    }
+
 mongoose.connect(config.database,function(err){
     if(err){
         return err;
@@ -39,10 +61,10 @@ mongoose.connect(config.database,function(err){
 
 app.use('/',mainRouter);
 app.use('/api',apiRouter);
-app.use('/post',postRouter);
-app.use('/team',teamRouter);
-app.use('/teamDetails',teamDetailsRouter);
-app.use('/events',eventRouter);
+app.use('/post',verifyUrl,postRouter);
+app.use('/team',verifyUrl,teamRouter);
+app.use('/teamDetails',verifyUrl,teamDetailsRouter);
+app.use('/events',verifyUrl,eventRouter);
 // app.use('*',mainRouter);
 
 

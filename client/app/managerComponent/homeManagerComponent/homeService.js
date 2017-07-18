@@ -15,10 +15,12 @@ require("rxjs/add/operator/map");
 var HomeService = (function () {
     function HomeService(http) {
         this.http = http;
+        this.token = localStorage.getItem('auth-token');
     }
     HomeService.prototype.getPosts = function (teamIds) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
+        headers.append('x-access-token', this.token);
         return this.http.get('post/getPosts?teamIds=' + teamIds, { headers: headers })
             .map(function (response) { return response._body; });
     };

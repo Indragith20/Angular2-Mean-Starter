@@ -70,6 +70,7 @@ router.get('/getEvents',function(req,res){
 router.post('/updateEvent',function(req,res){
     var parsedEvent=JSON.parse(req.query.event);
     //console.log("eventts In the back==>"+req.query.event);
+    console.log("checkpoint 3");
     var eventToUpdate={
         eventName:parsedEvent.eventName,
         eventStartDate:parsedEvent.eventStartDate,

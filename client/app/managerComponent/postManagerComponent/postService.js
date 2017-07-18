@@ -15,17 +15,21 @@ require("rxjs/add/operator/map");
 var PostService = (function () {
     function PostService(http) {
         this.http = http;
+        this.token = localStorage.getItem('auth-token');
     }
     PostService.prototype.getTeams = function (id) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
+        headers.append('x-access-token', this.token);
         return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
     PostService.prototype.addPost = function (postDetails) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
-        return this.http.post('post', postDetails, { headers: headers })
+        headers.append('Authorization', this.token);
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('post', postDetails, options)
             .map(function (response) { return response.json(); });
     };
     return PostService;

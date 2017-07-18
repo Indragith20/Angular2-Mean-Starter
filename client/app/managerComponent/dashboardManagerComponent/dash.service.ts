@@ -1,19 +1,22 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers,RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 
 export class DashService{
     teamSelected:any;
-
-    constructor(private http : Http){}
+    public token:any;
+    constructor(private http : Http){
+        this.token=localStorage.getItem('auth-token');
+    }
 
     /*****************************************Team Details Dashboard ********************************************************** */
     
     getTeams(id:any){
         var headers = new Headers();
         headers.append('Content-type','application/json');
+        headers.append('x-access-token',this.token);
         return this.http.get('team/getTeams?teamIds='+id,{headers:headers})
             .map(response=>response._body);
     }
@@ -23,6 +26,7 @@ export class DashService{
         var headers = new Headers();
         console.log("IDS from service==>"+id);
         headers.append('Content-type','application/json');
+        headers.append('x-access-token',this.token);
         return this.http.get('teamDetails/getMembers?teamId='+id,{headers:headers})
             .map(response=>response._body);
     }
@@ -48,7 +52,10 @@ export class DashService{
 
         console.log("event Details==>"+JSON.stringify(eventDet));
         headers.append('Content-type','application/json');
-        return this.http.post('events/saveEvent?event='+JSON.stringify(eventDet),{headers:headers})
+        headers.append('Authorization',this.token);
+        let options = new RequestOptions({ headers: headers});
+        
+        return this.http.post('events/saveEvent?event='+JSON.stringify(eventDet),options)
             .map(response=>response._body);
     }
 
@@ -56,9 +63,10 @@ export class DashService{
 
     getEvents(id:number,role:String){
         var headers = new Headers();
+
         console.log("IDS from service==>"+id);
         headers.append('Content-type','application/json');
-
+        headers.append('x-access-token',this.token);
         
 
         return this.http.get('events/getEvents?teamId='+id,{headers:headers})
@@ -69,6 +77,9 @@ export class DashService{
     updateEvent(event:any,team:any,member:any){
         var headers=new Headers();
         headers.append('Content-type','application/json');
+        headers.append('Authorization',this.token);
+        let options = new RequestOptions({ headers: headers});
+        //let body = this.token;
         var eventDet={
             eventId:event.id,
             eventName:event.title,
@@ -79,7 +90,7 @@ export class DashService{
             memberId:member.memberId,
             memberName:member.name
            };
-        return this.http.post('events/updateEvent?event='+JSON.stringify(eventDet),{headers:headers})
+        return this.http.post('events/updateEvent?event='+JSON.stringify(eventDet),options)
             .map(response=>response._body);   
     
     }
@@ -88,8 +99,9 @@ export class DashService{
     deleteEvent(eventId:number){
         var headers=new Headers();
         headers.append('content-type','application/json');
-
-        return this.http.post('events/deleteEvent?eventId='+eventId,{headers:headers})
+        headers.append('Authorization',this.token);
+        let options = new RequestOptions({ headers: headers});
+        return this.http.post('events/deleteEvent?eventId='+eventId,options)
                     .map(response=>response._body);
     }
     

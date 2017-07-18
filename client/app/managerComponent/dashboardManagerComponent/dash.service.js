@@ -15,11 +15,13 @@ require("rxjs/add/operator/map");
 var DashService = (function () {
     function DashService(http) {
         this.http = http;
+        this.token = localStorage.getItem('auth-token');
     }
     /*****************************************Team Details Dashboard ********************************************************** */
     DashService.prototype.getTeams = function (id) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
+        headers.append('x-access-token', this.token);
         return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
@@ -27,6 +29,7 @@ var DashService = (function () {
         var headers = new http_1.Headers();
         console.log("IDS from service==>" + id);
         headers.append('Content-type', 'application/json');
+        headers.append('x-access-token', this.token);
         return this.http.get('teamDetails/getMembers?teamId=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
@@ -45,19 +48,25 @@ var DashService = (function () {
         };
         console.log("event Details==>" + JSON.stringify(eventDet));
         headers.append('Content-type', 'application/json');
-        return this.http.post('events/saveEvent?event=' + JSON.stringify(eventDet), { headers: headers })
+        headers.append('Authorization', this.token);
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('events/saveEvent?event=' + JSON.stringify(eventDet), options)
             .map(function (response) { return response._body; });
     };
     DashService.prototype.getEvents = function (id, role) {
         var headers = new http_1.Headers();
         console.log("IDS from service==>" + id);
         headers.append('Content-type', 'application/json');
+        headers.append('x-access-token', this.token);
         return this.http.get('events/getEvents?teamId=' + id, { headers: headers })
             .map(function (response) { return response.json(); });
     };
     DashService.prototype.updateEvent = function (event, team, member) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
+        headers.append('Authorization', this.token);
+        var options = new http_1.RequestOptions({ headers: headers });
+        //let body = this.token;
         var eventDet = {
             eventId: event.id,
             eventName: event.title,
@@ -68,13 +77,15 @@ var DashService = (function () {
             memberId: member.memberId,
             memberName: member.name
         };
-        return this.http.post('events/updateEvent?event=' + JSON.stringify(eventDet), { headers: headers })
+        return this.http.post('events/updateEvent?event=' + JSON.stringify(eventDet), options)
             .map(function (response) { return response._body; });
     };
     DashService.prototype.deleteEvent = function (eventId) {
         var headers = new http_1.Headers();
         headers.append('content-type', 'application/json');
-        return this.http.post('events/deleteEvent?eventId=' + eventId, { headers: headers })
+        headers.append('Authorization', this.token);
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('events/deleteEvent?eventId=' + eventId, options)
             .map(function (response) { return response._body; });
     };
     return DashService;

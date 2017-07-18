@@ -15,11 +15,14 @@ require("rxjs/add/operator/map");
 var CreateService = (function () {
     function CreateService(http) {
         this.http = http;
+        this.token = localStorage.getItem('auth-token');
     }
     CreateService.prototype.createNewTeam = function (postData, managerId) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
-        return this.http.post('team/createTeam?managerId=' + managerId, postData, { headers: headers })
+        headers.append('Authorization', this.token);
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('team/createTeam?managerId=' + managerId, postData, options)
             .map(function (response) { return response._body; });
     };
     return CreateService;

@@ -15,10 +15,13 @@ require("rxjs/add/operator/map");
 var AddService = (function () {
     function AddService(http) {
         this.http = http;
+        this.token = localStorage.getItem('auth-token');
     }
     AddService.prototype.getTeams = function (id) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
+        headers.append('x-access-token', this.token);
+        console.log("Headers ==>" + headers);
         return this.http.get('team/getTeams?teamIds=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
@@ -26,7 +29,9 @@ var AddService = (function () {
         var headers = new http_1.Headers();
         console.log("new Menr Details ==>" + JSON.stringify(details));
         headers.append('Content-type', 'application/json');
-        return this.http.post('team/addMember?teamId=' + teamId, details, { headers: headers })
+        headers.append('Authorization', this.token);
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('team/addMember?teamId=' + teamId, details, options)
             .map(function (response) { return response._body; });
     };
     return AddService;
