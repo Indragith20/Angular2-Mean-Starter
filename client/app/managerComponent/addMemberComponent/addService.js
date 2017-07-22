@@ -30,8 +30,10 @@ var AddService = (function () {
         console.log("new Menr Details ==>" + JSON.stringify(details));
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', this.token);
+        // headers.append('memberContact',details.memberContact);
+        // headers.append('memberName',details.memberName);
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post('team/addMember?teamId=' + teamId, details, options)
+        return this.http.post('team/addMember?teamId=' + teamId + '&details=' + JSON.stringify(details), options)
             .map(function (response) { return response._body; });
     };
     return AddService;

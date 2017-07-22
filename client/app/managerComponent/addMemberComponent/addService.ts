@@ -25,8 +25,10 @@ export class AddService{
         console.log("new Menr Details ==>"+JSON.stringify(details))
         headers.append('Content-type','application/json');
         headers.append('Authorization',this.token);
+        // headers.append('memberContact',details.memberContact);
+        // headers.append('memberName',details.memberName);
         let options = new RequestOptions({ headers: headers});
-        return this.http.post('team/addMember?teamId='+teamId,details,options)
+        return this.http.post('team/addMember?teamId='+teamId+'&details='+JSON.stringify(details),options)
             .map(response=>response._body);
     }
 

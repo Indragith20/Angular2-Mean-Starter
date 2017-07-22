@@ -28,16 +28,22 @@ router.get('/checkUser',function(req,res){
         }
         else{
             console.log(resource);
-            console.log("secret ==>"+req.app.get('superSecret'));
-            var token = jwt.sign({user: userName}, req.app.get('superSecret'), {
-                expiresIn: '1d' // expires in 24 hours
+            if(resource){
+                console.log("secret ==>"+req.app.get('superSecret'));
+                var token = jwt.sign({user: userName}, req.app.get('superSecret'), {
+                    expiresIn: '1d' // expires in 24 hours
+                    });
+                res.json({
+                    success: true,
+                    message: 'Logged In Successfully',
+                    token: token,
+                    loggedUserDet:resource
                 });
-            res.json({
-                success: true,
-                message: 'Logged In Successfully',
-                token: token,
-                loggedUserDet:resource
-            });
+            }
+            else{
+                res.json({ success: false, message: 'Authentication failed.' });
+            }
+            
             // res.json(resource);
         }
     });

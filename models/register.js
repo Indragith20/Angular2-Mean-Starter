@@ -9,6 +9,8 @@ var userDetailsSchema = new Schema({
     contactNumber:Number,
     password:String,
     userRole:String,
+    emailId:String,
+    activeStatus:Boolean,
     teams:[],
     posts:[],
     comments:[]
