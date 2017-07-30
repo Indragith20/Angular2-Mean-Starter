@@ -18,6 +18,7 @@ export class AddMemberComponent{
     teamDetailPage:boolean;
     contactno:number;
     name:string;
+    emailId:string;
 
     constructor(private router:Router,private humanService:HumanService,private addService:AddService){
         this.managerDet=this.humanService.userDet;
@@ -46,7 +47,8 @@ export class AddMemberComponent{
     addMemberToTeam(){
         let memberDetails={
             memberName:this.name,
-            memberContact:this.contactno
+            memberContact:this.contactno,
+            memberEmail:this.emailId
         }
 
         this.addService.addNewMember(memberDetails,this.selectedTeamId)

@@ -5,11 +5,13 @@ var member=require('../models/register');
 
 router.get('/',function(req,res){
     var memberId=req.query.id;
-    member.find({memberId:memberId},function(err,resource){
+    var options = { new: true }; 
+    member.findOneAndUpdate({memberId:memberId},{activeStatus:true},options,function(err,resource){
         if(err){
             res.sendFile(path.resolve('./client/views/error.html'));
         }
         else{
+            console.log("resource==>"+resource);
             res.sendFile(path.resolve('./client/views/verify.html'));
         }
     })

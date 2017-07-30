@@ -8,5 +8,6 @@
 <div class="container" *ngIf="addMemberPage">
     Name: <input type="text" placeholder="Enter the Name" [(ngModel)]="name"> <br/>
     Contact Number: <input type="number" placeholder="Contact Number" [(ngModel)]="contactno"> <br/>
+    E-Mail:<input type="text" placeholder="Enter the E-Mail" [(ngModel)]="emailId"> 
     <button class="btn btn-danger" (click)="addMemberToTeam()">Add Member</button>
 </div>
