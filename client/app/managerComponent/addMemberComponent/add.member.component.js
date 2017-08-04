@@ -41,7 +41,8 @@ var AddMemberComponent = (function () {
     AddMemberComponent.prototype.addMemberToTeam = function () {
         var memberDetails = {
             memberName: this.name,
-            memberContact: this.contactno
+            memberContact: this.contactno,
+            memberEmail: this.emailId
         };
         this.addService.addNewMember(memberDetails, this.selectedTeamId)
             .subscribe(function (data) {

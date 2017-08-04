@@ -50,12 +50,15 @@ var HumanComponent = (function () {
             console.log(data);
             var details = JSON.parse(data);
             console.log(details);
-            // if(details.userRole=="Manager"){
-            _this.humanService.userDet = details.loggedUserDet;
-            localStorage.setItem('auth-token', details.token);
-            console.log("First Component == >" + _this.humanService.userDet);
-            _this.router.navigate(['/managerMain']);
-            // }
+            if (details.success == true) {
+                _this.humanService.userDet = details.loggedUserDet;
+                localStorage.setItem('auth-token', details.token);
+                console.log("First Component == >" + _this.humanService.userDet);
+                _this.router.navigate(['/managerMain']);
+            }
+            else {
+                _this.router.navigate(['/']);
+            }
         });
     };
     return HumanComponent;

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {HumanService} from '../../app.service';
 import {PostService} from './postService';
+import {MdDialog,MdDialogRef,MdDialogConfig} from '@angular/material';
+import {DialogComponent} from '../dialog.component';
 
 @Component({
     selector:'post',
@@ -14,9 +16,26 @@ export class PostManagerComponent{
     postTitle:String;
     postDetails:String;
     selectedTeam:any;
-    teams:{}
+    dialogRef: MdDialogRef<any>;
+    teams:{};
+    config: MdDialogConfig = {
+    disableClose: false,
+    hasBackdrop: true,
+    backdropClass: '',
+    width: '',
+    height: '',
+    position: {
+      top: '',
+      bottom: '',
+      left: '',
+      right: ''
+    },
+    data: {
+      message: 'Jazzy jazz jazz'
+    }
+  };
 
-    constructor(private humanService:HumanService,private postService:PostService){
+    constructor(private humanService:HumanService,private postService:PostService,private dialog:MdDialog){
         this.managerDet=this.humanService.userDet;
         console.log("Manager Details from posts page==>"+JSON.stringify(this.managerDet));
     }
@@ -54,7 +73,13 @@ export class PostManagerComponent{
         this.postService.addPost(notifyDetails)
             .subscribe(data=>{
                 console.log(data);
-                
+                if(data){
+                    this.dialogRef = this.dialog.open(DialogComponent,this.config);
+                    this.dialogRef.componentInstance.param1 = "test value";
+                    this.dialogRef.afterClosed().subscribe(result => {
+                            this.dialogRef = null;
+                        });
+                }                   
             });  
     }
 

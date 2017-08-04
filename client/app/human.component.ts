@@ -18,6 +18,7 @@ export class HumanComponent{
     userRole:string;
     registerPageActive:boolean = true;
     loginPageActive:boolean=false;
+    
     constructor(private humanService: HumanService,private router:Router){
         // this.registerPageActive=true;
         // this.loginPageActive=false;
@@ -55,12 +56,16 @@ export class HumanComponent{
                 console.log(data);
                 var details=JSON.parse(data);
                 console.log(details);
-                // if(details.userRole=="Manager"){
+                if(details.success==true){
                     this.humanService.userDet=details.loggedUserDet;
                     localStorage.setItem('auth-token', details.token);
                     console.log("First Component == >"+this.humanService.userDet);
                     this.router.navigate(['/managerMain']);
-                // }
+                }
+                else{
+
+                    this.router.navigate(['/']);
+                }
                 
             })
     }

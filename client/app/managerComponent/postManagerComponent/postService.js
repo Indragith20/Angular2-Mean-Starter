@@ -29,7 +29,7 @@ var PostService = (function () {
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', this.token);
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post('post', postDetails, options)
+        return this.http.post('post?postDet=' + JSON.stringify(postDetails), options)
             .map(function (response) { return response.json(); });
     };
     return PostService;

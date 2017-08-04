@@ -4,11 +4,12 @@ var Model=require('../models/posts');
 
 
 router.post('/',function(req,res){
+    var post=JSON.parse(req.query.postDet);
     var human = new Model({
-        title:req.body.title,
-        details:req.body.details,
-        teamIds:[req.body.teamDet],
-        postedBy:req.body.postedBy
+        title:post.title,
+        details:post.details,
+        teamIds:[post.teamDet],
+        postedBy:post.postedBy
     });
     human.save(function(err,resource){
         if(err){

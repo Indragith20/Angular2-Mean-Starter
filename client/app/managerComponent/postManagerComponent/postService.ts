@@ -26,7 +26,7 @@ export class PostService{
         headers.append('Content-type','application/json');
         headers.append('Authorization',this.token);
         let options=new RequestOptions({headers:headers});
-        return this.http.post('post',postDetails,options)
+        return this.http.post('post?postDet='+JSON.stringify(postDetails),options)
                 .map(response => response.json());
     }
 
