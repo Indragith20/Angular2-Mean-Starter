@@ -14,6 +14,7 @@ var postRouter = require('./routes/postRouter');
 var teamRouter = require('./routes/teamRouter');
 var teamDetailsRouter = require('./routes/teamDetailsRouter');
 var eventRouter = require('./routes/eventRouter');
+var profileRouter = require('./routes/profileRouter');
 var verifyRouter = require('./routes/verifyRouter');
 
 var app = express();
@@ -66,6 +67,7 @@ app.use('/post',verifyUrl,postRouter);
 app.use('/team',verifyUrl,teamRouter);
 app.use('/teamDetails',verifyUrl,teamDetailsRouter);
 app.use('/events',verifyUrl,eventRouter);
+app.use('/profile',verifyUrl,profileRouter);
 app.use('/verify',verifyRouter);
 // app.use('*',mainRouter);
 

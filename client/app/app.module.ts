@@ -24,12 +24,18 @@ import {VacationDashBoardComponent} from './managerComponent/dashboardManagerCom
 import {PostManagerComponent} from './managerComponent/postManagerComponent/post.manager.component';
 import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
 import {AddMemberComponent} from  './managerComponent/addMemberComponent/add.member.component';
+import {ProfileComponent} from  './managerComponent/profileManagerComponent/profile.component';
+
 import {HumanService} from './app.service';
 import {AuthService} from './auth.service';
 
 @NgModule({
-  imports: [ BrowserModule,HttpModule,FormsModule,routing,ScheduleModule,DialogModule,CalendarModule,CheckboxModule,BrowserAnimationsModule,AppMaterialModule],
-  declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,DashboardManagerComponent,TeamDashBoardComponent,PostManagerComponent,CreateTeamComponent,AddMemberComponent,VacationDashBoardComponent,DialogComponent,MessageComponent],
+  imports: [ BrowserModule,HttpModule,FormsModule,routing,ScheduleModule,DialogModule,CalendarModule,
+            CheckboxModule,BrowserAnimationsModule,AppMaterialModule],
+  declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,
+                DashboardManagerComponent,TeamDashBoardComponent,PostManagerComponent,
+                CreateTeamComponent,AddMemberComponent,VacationDashBoardComponent,DialogComponent,
+                MessageComponent,ProfileComponent],
   providers: [HumanService,AuthService],
   entryComponents: [ DialogComponent,MessageComponent ],
   bootstrap: [ AppComponent ]

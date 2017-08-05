@@ -69,7 +69,7 @@ var PostManagerComponent = (function () {
             console.log(data);
             if (data) {
                 _this.dialogRef = _this.dialog.open(dialog_component_1.DialogComponent, _this.config);
-                _this.dialogRef.componentInstance.param1 = "test value";
+                //this.dialogRef.componentInstance.param1 = "test value";
                 _this.dialogRef.afterClosed().subscribe(function (result) {
                     _this.dialogRef = null;
                 });

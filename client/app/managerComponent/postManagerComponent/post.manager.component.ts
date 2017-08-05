@@ -75,7 +75,7 @@ export class PostManagerComponent{
                 console.log(data);
                 if(data){
                     this.dialogRef = this.dialog.open(DialogComponent,this.config);
-                    this.dialogRef.componentInstance.param1 = "test value";
+                    //this.dialogRef.componentInstance.param1 = "test value";
                     this.dialogRef.afterClosed().subscribe(result => {
                             this.dialogRef = null;
                         });

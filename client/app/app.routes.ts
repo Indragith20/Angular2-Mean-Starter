@@ -12,6 +12,8 @@ import {VacationDashBoardComponent} from './managerComponent/dashboardManagerCom
 import {PostManagerComponent} from './managerComponent/postManagerComponent/post.manager.component';
 import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
 import {AddMemberComponent} from  './managerComponent/addMemberComponent/add.member.component';
+import {ProfileComponent} from './managerComponent/profileManagerComponent/profile.component';
+
 import {AuthService} from './auth.service';
 
 const routes: Routes = [
@@ -38,7 +40,8 @@ const routes: Routes = [
     },
       {path:'post',component:PostManagerComponent},
       {path:'createteam',component:CreateTeamComponent},
-      {path:'addMember',component:AddMemberComponent}
+      {path:'addMember',component:AddMemberComponent},
+      {path:'profile',component:ProfileComponent}
     ],
     canActivate: [AuthService]
   },

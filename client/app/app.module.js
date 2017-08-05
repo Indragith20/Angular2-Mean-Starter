@@ -28,6 +28,7 @@ var vacation_dashboard_component_1 = require("./managerComponent/dashboardManage
 var post_manager_component_1 = require("./managerComponent/postManagerComponent/post.manager.component");
 var create_manager_component_1 = require("./managerComponent/createTeamComponent/create.manager.component");
 var add_member_component_1 = require("./managerComponent/addMemberComponent/add.member.component");
+var profile_component_1 = require("./managerComponent/profileManagerComponent/profile.component");
 var app_service_1 = require("./app.service");
 var auth_service_1 = require("./auth.service");
 var AppModule = (function () {
@@ -37,8 +38,12 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routes_1.routing, primeng_1.ScheduleModule, dialog_1.DialogModule, primeng_1.CalendarModule, primeng_1.CheckboxModule, animations_1.BrowserAnimationsModule, app_materialmodule_1.AppMaterialModule],
-        declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent, dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent, create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent, vacation_dashboard_component_1.VacationDashBoardComponent, dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routes_1.routing, primeng_1.ScheduleModule, dialog_1.DialogModule, primeng_1.CalendarModule,
+            primeng_1.CheckboxModule, animations_1.BrowserAnimationsModule, app_materialmodule_1.AppMaterialModule],
+        declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent,
+            dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent,
+            create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent, vacation_dashboard_component_1.VacationDashBoardComponent, dialog_component_1.DialogComponent,
+            messagedialog_component_1.MessageComponent, profile_component_1.ProfileComponent],
         providers: [app_service_1.HumanService, auth_service_1.AuthService],
         entryComponents: [dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent],
         bootstrap: [app_component_1.AppComponent]

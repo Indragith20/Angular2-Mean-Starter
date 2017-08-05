@@ -8,14 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var material_1 = require("@angular/material");
 var messagedialog_component_1 = require("./messagedialog.component");
 var DialogComponent = (function () {
-    function DialogComponent(dialogRef, componentFactoryResolver) {
+    function DialogComponent(dialogRef, componentFactoryResolver, data) {
         this.dialogRef = dialogRef;
         this.componentFactoryResolver = componentFactoryResolver;
+        this.data = data;
     }
     DialogComponent.prototype.ngAfterViewInit = function () {
         this.loadComponent();
@@ -23,6 +27,7 @@ var DialogComponent = (function () {
     DialogComponent.prototype.loadComponent = function () {
         var componentFactory = this.componentFactoryResolver.resolveComponentFactory(messagedialog_component_1.MessageComponent);
         this.vcr.clear();
+        console.log("data from the ANtohte COmpoenn==>" + JSON.stringify(this.data));
         var componentRef = this.vcr.createComponent(componentFactory);
     };
     return DialogComponent;
@@ -37,7 +42,8 @@ DialogComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'dialog.html',
     }),
-    __metadata("design:paramtypes", [material_1.MdDialogRef, core_1.ComponentFactoryResolver])
+    __param(2, core_1.Inject(material_1.MD_DIALOG_DATA)),
+    __metadata("design:paramtypes", [material_1.MdDialogRef, core_1.ComponentFactoryResolver, Object])
 ], DialogComponent);
 exports.DialogComponent = DialogComponent;
 //# sourceMappingURL=dialog.component.js.map

@@ -10,6 +10,7 @@ var userDetailsSchema = new Schema({
     password:String,
     userRole:String,
     emailId:String,
+    profileImage:String,
     activeStatus:Boolean,
     teams:[],
     posts:[],
