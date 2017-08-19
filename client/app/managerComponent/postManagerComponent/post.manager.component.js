@@ -32,7 +32,8 @@ var PostManagerComponent = (function () {
                 right: ''
             },
             data: {
-                message: 'Jazzy jazz jazz'
+                container: 'Post',
+                message: 'Posted Successfully'
             }
         };
         this.managerDet = this.humanService.userDet;
@@ -76,16 +77,16 @@ var PostManagerComponent = (function () {
             }
         });
     };
+    PostManagerComponent = __decorate([
+        core_1.Component({
+            selector: 'post',
+            moduleId: module.id,
+            templateUrl: 'post.html',
+            providers: [postService_1.PostService]
+        }),
+        __metadata("design:paramtypes", [app_service_1.HumanService, postService_1.PostService, material_1.MdDialog])
+    ], PostManagerComponent);
     return PostManagerComponent;
 }());
-PostManagerComponent = __decorate([
-    core_1.Component({
-        selector: 'post',
-        moduleId: module.id,
-        templateUrl: 'post.html',
-        providers: [postService_1.PostService]
-    }),
-    __metadata("design:paramtypes", [app_service_1.HumanService, postService_1.PostService, material_1.MdDialog])
-], PostManagerComponent);
 exports.PostManagerComponent = PostManagerComponent;
 //# sourceMappingURL=post.manager.component.js.map

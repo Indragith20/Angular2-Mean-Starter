@@ -36,11 +36,11 @@ var AddService = (function () {
         return this.http.post('team/addMember?teamId=' + teamId + '&details=' + JSON.stringify(details), options)
             .map(function (response) { return response._body; });
     };
+    AddService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], AddService);
     return AddService;
 }());
-AddService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], AddService);
 exports.AddService = AddService;
 //# sourceMappingURL=addService.js.map

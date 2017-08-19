@@ -41,16 +41,16 @@ var HomeManagerComponent = (function () {
     HomeManagerComponent.prototype.createTeam = function () {
         this.router.navigate(['/managerMain/createteam']);
     };
+    HomeManagerComponent = __decorate([
+        core_1.Component({
+            selector: 'home',
+            moduleId: module.id,
+            templateUrl: 'home.html',
+            providers: [homeService_1.HomeService]
+        }),
+        __metadata("design:paramtypes", [app_service_1.HumanService, homeService_1.HomeService, router_1.Router])
+    ], HomeManagerComponent);
     return HomeManagerComponent;
 }());
-HomeManagerComponent = __decorate([
-    core_1.Component({
-        selector: 'home',
-        moduleId: module.id,
-        templateUrl: 'home.html',
-        providers: [homeService_1.HomeService]
-    }),
-    __metadata("design:paramtypes", [app_service_1.HumanService, homeService_1.HomeService, router_1.Router])
-], HomeManagerComponent);
 exports.HomeManagerComponent = HomeManagerComponent;
 //# sourceMappingURL=home.manager.component.js.map

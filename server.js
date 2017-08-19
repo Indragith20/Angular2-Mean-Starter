@@ -29,7 +29,7 @@ app.use(bodyparser.urlencoded({
 
 
 var verifyUrl=function(req,res,next){
-     var token=req.body.token || req.query.token || req.headers['x-access-token'] || req.body.headers.Authorization[0];
+     var token=req.body.token || req.query.token || req.headers['x-access-token'] || req.body.headers.Authorization[0] || req.body.x-access-token;
         console.log("Inside the authetication part token==>"+token);
         if(token){
             jwt.verify(token,req.app.get('superSecret'),function(err,decoded){
@@ -76,6 +76,7 @@ app.set('views',path.join(__dirname,'/client/views'));
 app.set('view engine','ejs');
 app.engine('html',require('ejs').renderFile);
 app.use(express.static(path.join(__dirname,'client'))); 
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 
 
 

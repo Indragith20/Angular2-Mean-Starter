@@ -88,11 +88,11 @@ var DashService = (function () {
         return this.http.post('events/deleteEvent?eventId=' + eventId, options)
             .map(function (response) { return response._body; });
     };
+    DashService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], DashService);
     return DashService;
 }());
-DashService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], DashService);
 exports.DashService = DashService;
 //# sourceMappingURL=dash.service.js.map

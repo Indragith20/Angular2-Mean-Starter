@@ -31,7 +31,8 @@ export class PostManagerComponent{
       right: ''
     },
     data: {
-      message: 'Jazzy jazz jazz'
+      container:'Post',  
+      message: 'Posted Successfully'
     }
   };
 

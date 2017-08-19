@@ -30,15 +30,15 @@ var TeamDashBoardComponent = (function () {
             _this.teamMemberDetails = JSON.parse(data);
         });
     };
+    TeamDashBoardComponent = __decorate([
+        core_1.Component({
+            selector: 'team-details',
+            moduleId: module.id,
+            templateUrl: 'teamDetails.html',
+        }),
+        __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
+    ], TeamDashBoardComponent);
     return TeamDashBoardComponent;
 }());
-TeamDashBoardComponent = __decorate([
-    core_1.Component({
-        selector: 'team-details',
-        moduleId: module.id,
-        templateUrl: 'teamDetails.html',
-    }),
-    __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
-], TeamDashBoardComponent);
 exports.TeamDashBoardComponent = TeamDashBoardComponent;
 //# sourceMappingURL=team.dashboard.component.js.map

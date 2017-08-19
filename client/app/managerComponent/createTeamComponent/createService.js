@@ -25,11 +25,11 @@ var CreateService = (function () {
         return this.http.post('team/createTeam?managerId=' + managerId, postData, options)
             .map(function (response) { return response._body; });
     };
+    CreateService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], CreateService);
     return CreateService;
 }());
-CreateService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], CreateService);
 exports.CreateService = CreateService;
 //# sourceMappingURL=createService.js.map

@@ -20,7 +20,8 @@ var app_component_1 = require("./app.component");
 var human_component_1 = require("./human.component");
 var manager_component_1 = require("./managerComponent/manager.component");
 var dialog_component_1 = require("./managerComponent/dialog.component");
-var messagedialog_component_1 = require("./managerComponent/messagedialog.component");
+var messagedialog_component_1 = require("./managerComponent/DialogComponents/messagedialog.component");
+var imageDialog_component_1 = require("./managerComponent/DialogComponents/imageDialog.component");
 var home_manager_component_1 = require("./managerComponent/homeManagerComponent/home.manager.component");
 var dashboard_manager_component_1 = require("./managerComponent/dashboardManagerComponent/dashboard.manager.component");
 var team_dashboard_component_1 = require("./managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component");
@@ -34,20 +35,20 @@ var auth_service_1 = require("./auth.service");
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routes_1.routing, primeng_1.ScheduleModule, dialog_1.DialogModule, primeng_1.CalendarModule,
+                primeng_1.CheckboxModule, animations_1.BrowserAnimationsModule, app_materialmodule_1.AppMaterialModule],
+            declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent,
+                dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent,
+                create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent, vacation_dashboard_component_1.VacationDashBoardComponent, dialog_component_1.DialogComponent,
+                messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, profile_component_1.ProfileComponent],
+            providers: [app_service_1.HumanService, auth_service_1.AuthService],
+            entryComponents: [dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent],
+            bootstrap: [app_component_1.AppComponent]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routes_1.routing, primeng_1.ScheduleModule, dialog_1.DialogModule, primeng_1.CalendarModule,
-            primeng_1.CheckboxModule, animations_1.BrowserAnimationsModule, app_materialmodule_1.AppMaterialModule],
-        declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent,
-            dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent,
-            create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent, vacation_dashboard_component_1.VacationDashBoardComponent, dialog_component_1.DialogComponent,
-            messagedialog_component_1.MessageComponent, profile_component_1.ProfileComponent],
-        providers: [app_service_1.HumanService, auth_service_1.AuthService],
-        entryComponents: [dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent],
-        bootstrap: [app_component_1.AppComponent]
-    })
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

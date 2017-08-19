@@ -45,16 +45,16 @@ var CreateTeamComponent = (function () {
         console.log("navigate to add member page");
         this.router.navigate(['/addMember']);
     };
+    CreateTeamComponent = __decorate([
+        core_1.Component({
+            selector: 'createteam',
+            moduleId: module.id,
+            templateUrl: 'createteam.html',
+            providers: [createService_1.CreateService]
+        }),
+        __metadata("design:paramtypes", [app_service_1.HumanService, createService_1.CreateService, router_1.Router])
+    ], CreateTeamComponent);
     return CreateTeamComponent;
 }());
-CreateTeamComponent = __decorate([
-    core_1.Component({
-        selector: 'createteam',
-        moduleId: module.id,
-        templateUrl: 'createteam.html',
-        providers: [createService_1.CreateService]
-    }),
-    __metadata("design:paramtypes", [app_service_1.HumanService, createService_1.CreateService, router_1.Router])
-], CreateTeamComponent);
 exports.CreateTeamComponent = CreateTeamComponent;
 //# sourceMappingURL=create.manager.component.js.map

@@ -32,11 +32,11 @@ var PostService = (function () {
         return this.http.post('post?postDet=' + JSON.stringify(postDetails), options)
             .map(function (response) { return response.json(); });
     };
+    PostService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], PostService);
     return PostService;
 }());
-PostService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], PostService);
 exports.PostService = PostService;
 //# sourceMappingURL=postService.js.map

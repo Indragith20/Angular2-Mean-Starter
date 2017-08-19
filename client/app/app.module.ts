@@ -14,9 +14,10 @@ import { AppComponent }  from './app.component';
 import {HumanComponent} from './human.component';
 import {ManagerComponent} from './managerComponent/manager.component';
 import {DialogComponent} from './managerComponent/dialog.component';
-import {MessageComponent} from './managerComponent/messagedialog.component';
-import {HomeManagerComponent} from './managerComponent/homeManagerComponent/home.manager.component';
+import {MessageComponent} from './managerComponent/DialogComponents/messagedialog.component';
+import {ImageComponent} from './managerComponent/DialogComponents/imageDialog.component';
 
+import {HomeManagerComponent} from './managerComponent/homeManagerComponent/home.manager.component';
 import {DashboardManagerComponent} from './managerComponent/dashboardManagerComponent/dashboard.manager.component';
 import {TeamDashBoardComponent} from './managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component';
 import {VacationDashBoardComponent} from './managerComponent/dashboardManagerComponent/vacationTrackerComponent/vacation.dashboard.component';
@@ -35,9 +36,9 @@ import {AuthService} from './auth.service';
   declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,
                 DashboardManagerComponent,TeamDashBoardComponent,PostManagerComponent,
                 CreateTeamComponent,AddMemberComponent,VacationDashBoardComponent,DialogComponent,
-                MessageComponent,ProfileComponent],
+                MessageComponent,ImageComponent,ProfileComponent],
   providers: [HumanService,AuthService],
-  entryComponents: [ DialogComponent,MessageComponent ],
+  entryComponents: [ DialogComponent,MessageComponent,ImageComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

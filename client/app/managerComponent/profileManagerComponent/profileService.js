@@ -23,11 +23,18 @@ var ProfileService = (function () {
         return this.http.get('profile/getProfile?profileId=' + id, { headers: headers })
             .map(function (response) { return response._body; });
     };
+    ProfileService.prototype.uploadImage = function (formData) {
+        console.log(formData);
+        var headers = new http_1.Headers();
+        headers.append('x-access-token', this.token);
+        return this.http.post('profile/upload', formData, { headers: headers })
+            .map(function (files) { return files.json(); });
+    };
+    ProfileService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], ProfileService);
     return ProfileService;
 }());
-ProfileService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], ProfileService);
 exports.ProfileService = ProfileService;
 //# sourceMappingURL=profileService.js.map

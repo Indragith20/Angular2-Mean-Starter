@@ -37,16 +37,16 @@ var DashboardManagerComponent = (function () {
         console.log("Selected Team from dashboard Page==>" + team + "JSON==>" + JSON.stringify(team));
         this.dashService.teamSelected = this.selectedTeam;
     };
+    DashboardManagerComponent = __decorate([
+        core_1.Component({
+            selector: 'dashboard',
+            moduleId: module.id,
+            templateUrl: 'dashboard.html',
+            providers: [dash_service_1.DashService]
+        }),
+        __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
+    ], DashboardManagerComponent);
     return DashboardManagerComponent;
 }());
-DashboardManagerComponent = __decorate([
-    core_1.Component({
-        selector: 'dashboard',
-        moduleId: module.id,
-        templateUrl: 'dashboard.html',
-        providers: [dash_service_1.DashService]
-    }),
-    __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, dash_service_1.DashService])
-], DashboardManagerComponent);
 exports.DashboardManagerComponent = DashboardManagerComponent;
 //# sourceMappingURL=dashboard.manager.component.js.map

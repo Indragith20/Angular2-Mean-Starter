@@ -24,11 +24,11 @@ var HomeService = (function () {
         return this.http.get('post/getPosts?teamIds=' + teamIds, { headers: headers })
             .map(function (response) { return response._body; });
     };
+    HomeService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], HomeService);
     return HomeService;
 }());
-HomeService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], HomeService);
 exports.HomeService = HomeService;
 //# sourceMappingURL=homeService.js.map

@@ -61,15 +61,15 @@ var HumanComponent = (function () {
             }
         });
     };
+    HumanComponent = __decorate([
+        core_1.Component({
+            selector: 'human',
+            moduleId: module.id,
+            templateUrl: 'human.html',
+        }),
+        __metadata("design:paramtypes", [app_service_1.HumanService, router_1.Router])
+    ], HumanComponent);
     return HumanComponent;
 }());
-HumanComponent = __decorate([
-    core_1.Component({
-        selector: 'human',
-        moduleId: module.id,
-        templateUrl: 'human.html',
-    }),
-    __metadata("design:paramtypes", [app_service_1.HumanService, router_1.Router])
-], HumanComponent);
 exports.HumanComponent = HumanComponent;
 //# sourceMappingURL=human.component.js.map

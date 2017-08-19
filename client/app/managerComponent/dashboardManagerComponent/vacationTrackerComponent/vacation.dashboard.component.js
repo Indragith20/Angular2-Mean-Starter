@@ -110,16 +110,16 @@ var VacationDashBoardComponent = (function () {
         };
         this.getEventFun();
     };
+    VacationDashBoardComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'vacation-dashboard',
+            templateUrl: './vacation.html',
+        }),
+        __metadata("design:paramtypes", [dash_service_1.DashService, app_service_1.HumanService, core_1.ChangeDetectorRef])
+    ], VacationDashBoardComponent);
     return VacationDashBoardComponent;
 }());
-VacationDashBoardComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'vacation-dashboard',
-        templateUrl: './vacation.html',
-    }),
-    __metadata("design:paramtypes", [dash_service_1.DashService, app_service_1.HumanService, core_1.ChangeDetectorRef])
-], VacationDashBoardComponent);
 exports.VacationDashBoardComponent = VacationDashBoardComponent;
 var MyEvent = (function () {
     function MyEvent() {

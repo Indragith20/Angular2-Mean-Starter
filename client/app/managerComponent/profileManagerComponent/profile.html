@@ -1,1 +1,47 @@
 <h1>Profile Page</h1>
+
+<div class="container" *ngIf="loadingPhoto==false">
+    <div class="row">
+        <!-- <div class="col-md-2">
+            <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+            <button type="button" (click)="upload()">Upload</button>
+        </div> -->
+        <div class="col-md-3">
+            <img src="{{profilePhoto}}" alt="Profile Photo" style="height:100px;width:100%;cursor:pointer"
+                (click)="openDialogModal()" />
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-2">
+                    Name:
+                </div>
+                <div class="col-md-10">
+                    {{managerDet.name}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    ConTact Number:
+                </div>
+                <div class="col-md-10">
+                    {{managerDet.contactNumber}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    UserRole:
+                </div>
+                <div class="col-md-10">
+                    {{managerDet.userRole}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="conatiner" *ngIf="loadingPhoto==true">
+    <div class="row">
+        <h4 class="text-center">Loading...</h4>
+    </div>
+</div>

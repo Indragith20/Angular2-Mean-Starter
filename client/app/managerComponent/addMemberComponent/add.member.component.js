@@ -49,16 +49,16 @@ var AddMemberComponent = (function () {
             console.log(data);
         });
     };
+    AddMemberComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'addMember',
+            templateUrl: 'addMember.html',
+            providers: [addService_1.AddService]
+        }),
+        __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, addService_1.AddService])
+    ], AddMemberComponent);
     return AddMemberComponent;
 }());
-AddMemberComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'addMember',
-        templateUrl: 'addMember.html',
-        providers: [addService_1.AddService]
-    }),
-    __metadata("design:paramtypes", [router_1.Router, app_service_1.HumanService, addService_1.AddService])
-], AddMemberComponent);
 exports.AddMemberComponent = AddMemberComponent;
 //# sourceMappingURL=add.member.component.js.map

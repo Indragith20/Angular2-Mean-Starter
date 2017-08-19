@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-5">
+            <img [src]="profilePhoto" alt="Profile Photo" style="height:300px;width:100%;cursor:pointer"/>
+        </div>
+
+        <div class="col-md-2">
+            <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+            <button type="button" (click)="upload()">Upload</button>
+        </div>
+    </div>
+</div>

@@ -17,15 +17,15 @@ var ManagerComponent = (function () {
         this.managerDet = this.humanService.userDet;
         console.log("Manager Details==>" + this.managerDet);
     }
+    ManagerComponent = __decorate([
+        core_1.Component({
+            selector: 'manager',
+            moduleId: module.id,
+            templateUrl: 'manager.html',
+        }),
+        __metadata("design:paramtypes", [app_service_1.HumanService])
+    ], ManagerComponent);
     return ManagerComponent;
 }());
-ManagerComponent = __decorate([
-    core_1.Component({
-        selector: 'manager',
-        moduleId: module.id,
-        templateUrl: 'manager.html',
-    }),
-    __metadata("design:paramtypes", [app_service_1.HumanService])
-], ManagerComponent);
 exports.ManagerComponent = ManagerComponent;
 //# sourceMappingURL=manager.component.js.map

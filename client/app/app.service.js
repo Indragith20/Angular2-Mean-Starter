@@ -29,11 +29,11 @@ var HumanService = (function () {
         return this.http.get('api/checkUser?username=' + name + '&password=' + pass)
             .map(function (response) { return response._body; });
     };
+    HumanService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], HumanService);
     return HumanService;
 }());
-HumanService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], HumanService);
 exports.HumanService = HumanService;
 //# sourceMappingURL=app.service.js.map

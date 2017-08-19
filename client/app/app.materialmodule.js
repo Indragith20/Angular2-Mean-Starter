@@ -11,13 +11,13 @@ var material_1 = require("@angular/material");
 var AppMaterialModule = (function () {
     function AppMaterialModule() {
     }
+    AppMaterialModule = __decorate([
+        core_1.NgModule({
+            imports: [material_1.MdButtonModule, material_1.MdCheckboxModule, material_1.MdTabsModule, material_1.MdDialogModule],
+            exports: [material_1.MdButtonModule, material_1.MdCheckboxModule, material_1.MdTabsModule, material_1.MdDialogModule],
+        })
+    ], AppMaterialModule);
     return AppMaterialModule;
 }());
-AppMaterialModule = __decorate([
-    core_1.NgModule({
-        imports: [material_1.MdButtonModule, material_1.MdCheckboxModule, material_1.MdTabsModule, material_1.MdDialogModule],
-        exports: [material_1.MdButtonModule, material_1.MdCheckboxModule, material_1.MdTabsModule, material_1.MdDialogModule],
-    })
-], AppMaterialModule);
 exports.AppMaterialModule = AppMaterialModule;
 //# sourceMappingURL=app.materialmodule.js.map
