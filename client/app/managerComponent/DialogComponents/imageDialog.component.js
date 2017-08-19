@@ -12,12 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var imageUpload_service_1 = require("./imageUpload.service");
 var ImageComponent = (function () {
-    function ImageComponent(imageService) {
+    function ImageComponent(imageService, element) {
         this.imageService = imageService;
+        this.element = element;
         this.filesToUpload = [];
+        this.uploadPicArea = false;
     }
+    ImageComponent.prototype.UploadPic = function () {
+        this.uploadPicArea = true;
+    };
     ImageComponent.prototype.fileChangeEvent = function (fileInput) {
         this.filesToUpload = fileInput.target.files;
+        var reader = new FileReader();
+        var image = this.element.nativeElement.querySelector('.image');
+        reader.onload = function (e) {
+            var src = e.target.files;
+            image.src = src;
+        };
+        reader.readAsDataURL(fileInput.target.files[0]);
         //this.product.photo = fileInput.target.files[0]['name'];
     };
     ImageComponent.prototype.upload = function () {
@@ -39,7 +51,7 @@ var ImageComponent = (function () {
             templateUrl: './imageUpload.html',
             providers: [imageUpload_service_1.ImageUploadService]
         }),
-        __metadata("design:paramtypes", [imageUpload_service_1.ImageUploadService])
+        __metadata("design:paramtypes", [imageUpload_service_1.ImageUploadService, core_1.ElementRef])
     ], ImageComponent);
     return ImageComponent;
 }());

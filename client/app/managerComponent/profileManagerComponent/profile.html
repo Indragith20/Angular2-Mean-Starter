@@ -7,7 +7,7 @@
             <button type="button" (click)="upload()">Upload</button>
         </div> -->
         <div class="col-md-3">
-            <img src="{{profilePhoto}}" alt="Profile Photo" style="height:100px;width:100%;cursor:pointer"
+            <img src="{{profilePhoto}}?{{getTimeStamp()}}" alt="Profile Photo" style="height:100px;width:100%;cursor:pointer"
                 (click)="openDialogModal()" />
         </div>
         <div class="col-md-6">

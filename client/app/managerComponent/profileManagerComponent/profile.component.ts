@@ -56,8 +56,12 @@ export class ProfileComponent{
             this.managerDet=parsedData[0];
             this.profilePhoto=this.managerDet.profileImage;
             this.loadingPhoto=false;
-            console.log(this.profilePhoto);
+            
         });
+    }
+
+    getTimeStamp(){
+        return new Date();
     }
     // fileChangeEvent(fileInput: any) {
     //     this.filesToUpload = <Array<File>>fileInput.target.files;
@@ -86,6 +90,7 @@ export class ProfileComponent{
         this.dialogRef.afterClosed().subscribe(result => {
             this.dialogRef = null;
             this.loadingPhoto=true;
+            this.profilePhoto="";
             this.getProfileDet();
         });
     }

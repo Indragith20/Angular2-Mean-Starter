@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component,ElementRef} from '@angular/core';
 import {ImageUploadService} from './imageUpload.service';
 
 @Component({
@@ -12,13 +12,27 @@ export class ImageComponent{
   filesToUpload: Array<File> = [];
   managerDet:any;
   profilePhoto:any;
+  uploadPicArea:boolean=false;
 
-  constructor(private imageService:ImageUploadService){
+  constructor(private imageService:ImageUploadService,private element:ElementRef){
 
   }
 
+  UploadPic(){
+    this.uploadPicArea=true;
+  }
+  
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
+    var reader = new FileReader();
+    var image = this.element.nativeElement.querySelector('.image');
+      reader.onload = function(e:any) {
+        var src = e.target.files;
+        image.src = src;
+      };
+
+      reader.readAsDataURL(fileInput.target.files[0]);
+
     //this.product.photo = fileInput.target.files[0]['name'];
   }
 

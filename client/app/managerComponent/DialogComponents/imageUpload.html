@@ -1,13 +1,33 @@
-<div class="container">
+<div class="container" *ngIf="uploadPicArea==false">
     <div class="row">
         
-        <div class="col-md-5">
-            <img [src]="profilePhoto" alt="Profile Photo" style="height:300px;width:100%;cursor:pointer"/>
+        <div class="col-md-10">
+            <img [src]="profilePhoto" alt="Profile Photo" style="height:500px;width:100%;cursor:pointer"/>
         </div>
 
         <div class="col-md-2">
-            <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
-            <button type="button" (click)="upload()">Upload</button>
+            <button md-raised-button (click)="UploadPic()">Update Profile Picture</button>
         </div>
+        
+    </div>
+</div>
+
+
+<div class="container" *ngIf="uploadPicArea==true">
+    <div class="row">
+        <div class="col-md-6" style="position: relative; border: 1px solid red; 
+            width: 150px; height: 100px; line-height: 30px; text-align: center;" >
+                + Upload Photo        
+        <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." 
+            style="opacity: 0.0; position: absolute; top:0; left: 0; bottom: 0; right:0; 
+            width: 100%; height:100%;" />
+        
+        </div>
+    </div>
+    <div class="row">
+        <img class="image" />
+    </div>
+    <div class="row">
+            <button type="button" (click)="upload()">Update Picture</button>
     </div>
 </div>

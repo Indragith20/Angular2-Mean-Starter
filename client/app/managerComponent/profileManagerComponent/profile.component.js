@@ -52,8 +52,10 @@ var ProfileComponent = (function () {
             _this.managerDet = parsedData[0];
             _this.profilePhoto = _this.managerDet.profileImage;
             _this.loadingPhoto = false;
-            console.log(_this.profilePhoto);
         });
+    };
+    ProfileComponent.prototype.getTimeStamp = function () {
+        return new Date();
     };
     // fileChangeEvent(fileInput: any) {
     //     this.filesToUpload = <Array<File>>fileInput.target.files;
@@ -79,6 +81,7 @@ var ProfileComponent = (function () {
         this.dialogRef.afterClosed().subscribe(function (result) {
             _this.dialogRef = null;
             _this.loadingPhoto = true;
+            _this.profilePhoto = "";
             _this.getProfileDet();
         });
     };
