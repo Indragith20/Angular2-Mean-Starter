@@ -27,7 +27,8 @@ export class ImageComponent{
     var reader = new FileReader();
     var image = this.element.nativeElement.querySelector('.image');
       reader.onload = function(e:any) {
-        var src = e.target.files;
+        console.log("event is "+e);
+        var src = e.target.result;
         image.src = src;
       };
 

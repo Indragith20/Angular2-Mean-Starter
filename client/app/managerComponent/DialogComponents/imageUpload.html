@@ -1,7 +1,10 @@
 <div class="container" *ngIf="uploadPicArea==false">
     <div class="row">
+        <hr />
+    </div>
+    <div class="row">
         
-        <div class="col-md-10">
+        <div class="col-md-8">
             <img [src]="profilePhoto" alt="Profile Photo" style="height:500px;width:100%;cursor:pointer"/>
         </div>
 
@@ -10,12 +13,15 @@
         </div>
         
     </div>
+    <div class="row">
+            <hr />
+        </div>
 </div>
 
 
 <div class="container" *ngIf="uploadPicArea==true">
     <div class="row">
-        <div class="col-md-6" style="position: relative; border: 1px solid red; 
+        <div class="col-md-6 text-center" style="position: relative; border: 1px solid red; 
             width: 150px; height: 100px; line-height: 30px; text-align: center;" >
                 + Upload Photo        
         <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." 
@@ -24,10 +30,22 @@
         
         </div>
     </div>
+
     <div class="row">
-        <img class="image" />
+        <hr />
     </div>
+
     <div class="row">
+        Image Preview
+        <div class="col-md-6">
+            <img class="image" src="/uploads/default.jpg" alt="Profile Photo" style="height:300px;width:100%;"/>
+        </div>
+        <div class="col-md-6">
             <button type="button" (click)="upload()">Update Picture</button>
+        </div>
     </div>
+    <div class="row">
+        <hr />
+    </div>
+
 </div>

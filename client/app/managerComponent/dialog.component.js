@@ -22,7 +22,7 @@ var DialogComponent = (function () {
         this.componentFactoryResolver = componentFactoryResolver;
         this.data = data;
     }
-    DialogComponent.prototype.ngAfterViewInit = function () {
+    DialogComponent.prototype.ngOnInit = function () {
         this.loadComponent();
     };
     DialogComponent.prototype.loadComponent = function () {

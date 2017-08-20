@@ -14,7 +14,7 @@ export class DialogComponent{
 
   constructor(public dialogRef: MdDialogRef<DialogComponent>,private componentFactoryResolver:ComponentFactoryResolver,@Inject(MD_DIALOG_DATA) public data: any) { }
 
-  ngAfterViewInit(){
+  ngOnInit(){
       this.loadComponent();
   }
 

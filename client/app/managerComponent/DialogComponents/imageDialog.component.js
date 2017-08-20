@@ -26,7 +26,8 @@ var ImageComponent = (function () {
         var reader = new FileReader();
         var image = this.element.nativeElement.querySelector('.image');
         reader.onload = function (e) {
-            var src = e.target.files;
+            console.log("event is " + e);
+            var src = e.target.result;
             image.src = src;
         };
         reader.readAsDataURL(fileInput.target.files[0]);
