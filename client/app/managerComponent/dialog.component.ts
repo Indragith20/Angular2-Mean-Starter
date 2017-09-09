@@ -2,6 +2,7 @@ import { Component,ViewContainerRef, ViewChild,AfterViewInit,ComponentFactoryRes
 import { MdDialog,MdDialogRef,MdDialogConfig,MD_DIALOG_DATA } from '@angular/material';
 import {MessageComponent} from './DialogComponents/messagedialog.component';
 import {ImageComponent} from './DialogComponents/imageDialog.component';
+import {FeedbackComponent} from './DialogComponents/feedback.component';
 
 @Component({
   selector: 'app-dialog',
@@ -46,6 +47,19 @@ export class DialogComponent{
       componentRef.instance.managerDet = this.data.managerDet;
       componentRef.instance.profilePhoto = this.data.profilePhoto;
 
+      componentRef.changeDetectorRef.detectChanges(); 
+    }
+
+    else if(this.data.container=="feedback"){
+      let componentFactory = this.componentFactoryResolver.resolveComponentFactory(FeedbackComponent);
+
+      this.vcr.clear();
+
+      let componentRef = this.vcr.createComponent(componentFactory);
+      this.dialogRef.updateSize('60%', '90%');
+      this.headerMessage="Provide Feedback";
+      componentRef.instance.memberDet = this.data.memberDet;
+      
       componentRef.changeDetectorRef.detectChanges(); 
     }
     

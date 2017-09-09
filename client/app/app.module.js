@@ -22,6 +22,7 @@ var manager_component_1 = require("./managerComponent/manager.component");
 var dialog_component_1 = require("./managerComponent/dialog.component");
 var messagedialog_component_1 = require("./managerComponent/DialogComponents/messagedialog.component");
 var imageDialog_component_1 = require("./managerComponent/DialogComponents/imageDialog.component");
+var feedback_component_1 = require("./managerComponent/DialogComponents/feedback.component");
 var home_manager_component_1 = require("./managerComponent/homeManagerComponent/home.manager.component");
 var dashboard_manager_component_1 = require("./managerComponent/dashboardManagerComponent/dashboard.manager.component");
 var team_dashboard_component_1 = require("./managerComponent/dashboardManagerComponent/teamDetailsComponent/team.dashboard.component");
@@ -42,9 +43,9 @@ var AppModule = (function () {
             declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent,
                 dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent,
                 create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent, vacation_dashboard_component_1.VacationDashBoardComponent, dialog_component_1.DialogComponent,
-                messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, profile_component_1.ProfileComponent],
+                messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, profile_component_1.ProfileComponent, feedback_component_1.FeedbackComponent],
             providers: [app_service_1.HumanService, auth_service_1.AuthService],
-            entryComponents: [dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent],
+            entryComponents: [dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, feedback_component_1.FeedbackComponent],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);

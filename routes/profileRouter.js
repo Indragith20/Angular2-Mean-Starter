@@ -50,5 +50,20 @@ router.post("/upload", upload.array("uploads[]", 12), function (req, res) {
 });
 
 
+router.post('/feedback',function(req,res){
+    console.log(req.body);
+    console.log("member Id ==>"+req.body.memberId+"message==>"+req.body.message);
+    Model.findOneAndUpdate({memberId:req.body.memberID},{$push: {"feedback": req.body.message}},
+    {safe: true, upsert: true, new : true},function(err,doc){
+        if(err){
+            res.send(err).status(501);
+        }
+        else{
+            var message="posted successfully"
+            res.send(message).status(200);
+        }
+    })
+})
+
 
 module.exports = router;

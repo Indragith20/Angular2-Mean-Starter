@@ -16,6 +16,7 @@ var core_1 = require("@angular/core");
 var material_1 = require("@angular/material");
 var messagedialog_component_1 = require("./DialogComponents/messagedialog.component");
 var imageDialog_component_1 = require("./DialogComponents/imageDialog.component");
+var feedback_component_1 = require("./DialogComponents/feedback.component");
 var DialogComponent = (function () {
     function DialogComponent(dialogRef, componentFactoryResolver, data) {
         this.dialogRef = dialogRef;
@@ -44,6 +45,15 @@ var DialogComponent = (function () {
             this.headerMessage = "Image Upload";
             componentRef.instance.managerDet = this.data.managerDet;
             componentRef.instance.profilePhoto = this.data.profilePhoto;
+            componentRef.changeDetectorRef.detectChanges();
+        }
+        else if (this.data.container == "feedback") {
+            var componentFactory = this.componentFactoryResolver.resolveComponentFactory(feedback_component_1.FeedbackComponent);
+            this.vcr.clear();
+            var componentRef = this.vcr.createComponent(componentFactory);
+            this.dialogRef.updateSize('60%', '90%');
+            this.headerMessage = "Provide Feedback";
+            componentRef.instance.memberDet = this.data.memberDet;
             componentRef.changeDetectorRef.detectChanges();
         }
     };

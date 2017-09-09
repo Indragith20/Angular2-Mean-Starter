@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {{memberDet.name}}
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">    
+            <textarea rows="4" cols="50" [(ngModel)]="message" style="border-color:#10BBB3;color:black">
+                Leave a constructive message
+            </textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button md-raised-button style="color:white;background-color:rgb(67, 138, 0)" (click)="postMessage()">
+              Post
+            </button>
+        </div>
+    </div>
+
+</div>
+<hr />

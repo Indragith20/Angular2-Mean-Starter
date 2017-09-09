@@ -21,6 +21,9 @@ var ImageComponent = (function () {
     ImageComponent.prototype.UploadPic = function () {
         this.uploadPicArea = true;
     };
+    ImageComponent.prototype.getTimeStamp = function () {
+        return new Date();
+    };
     ImageComponent.prototype.fileChangeEvent = function (fileInput) {
         this.filesToUpload = fileInput.target.files;
         var reader = new FileReader();

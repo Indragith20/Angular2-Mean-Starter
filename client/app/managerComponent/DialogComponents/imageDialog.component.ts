@@ -21,6 +21,10 @@ export class ImageComponent{
   UploadPic(){
     this.uploadPicArea=true;
   }
+
+  getTimeStamp(){
+    return new Date();
+  }
   
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;

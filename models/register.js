@@ -12,6 +12,7 @@ var userDetailsSchema = new Schema({
     emailId:String,
     profileImage:{type:String,default:'/uploads/default.jpg'},
     activeStatus:Boolean,
+    feedback:[],
     teams:[],
     posts:[],
     comments:[]

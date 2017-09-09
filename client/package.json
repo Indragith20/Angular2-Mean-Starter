@@ -36,7 +36,7 @@
     "@angular/platform-server": "^4.3.4",
     "@angular/router": "^4.3.4",
     "@angular/upgrade": "2.0.0-rc.6",
-    "@types/node": "^7.0.29",
+    "@types/node": "^7.0.43",
     "angular2-in-memory-web-api": "0.0.18",
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",
