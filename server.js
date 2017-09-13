@@ -67,7 +67,7 @@ app.use('/post',verifyUrl,postRouter);
 app.use('/team',verifyUrl,teamRouter);
 app.use('/teamDetails',verifyUrl,teamDetailsRouter);
 app.use('/events',verifyUrl,eventRouter);
-app.use('/profile',verifyUrl,profileRouter);
+app.use('/profile',profileRouter);
 app.use('/verify',verifyRouter);
 // app.use('*',mainRouter);
 

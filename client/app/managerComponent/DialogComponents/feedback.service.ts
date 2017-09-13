@@ -10,12 +10,12 @@ export class FeedbackService{
         this.token=localStorage.getItem('auth-token');
     }
 
-    putFeedback(formData:any){
-        
+    putFeedback(message:string,memberID:number){
+        console.log(message);
         let headers=new Headers();
         headers.append('x-access-token',this.token);
-       return this.http.post('profile/feedback',formData,{headers:headers})
-                .map(response => response.json());
+       return this.http.post('profile/feedback?memberID='+memberID+'&message='+JSON.stringify(message),{headers:headers})
+                .map(response => response);
     }
 
 }

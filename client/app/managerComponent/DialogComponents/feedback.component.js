@@ -14,13 +14,16 @@ var feedback_service_1 = require("./feedback.service");
 var FeedbackComponent = (function () {
     function FeedbackComponent(feedbackService) {
         this.feedbackService = feedbackService;
+        this.postStatus = false;
     }
     FeedbackComponent.prototype.postMessage = function () {
-        var formData = new FormData();
-        formData.append("memberId", this.memberDet.memberId);
-        formData.append("message", this.message);
-        this.feedbackService.putFeedback(formData)
-            .subscribe(function (res) { return console.log(res); });
+        var _this = this;
+        this.feedbackService.putFeedback(this.message, this.memberDet.memberId)
+            .subscribe(function (res) {
+            _this.postStatus = true;
+            console.log(res);
+            _this.successMessage = res;
+        });
     };
     FeedbackComponent = __decorate([
         core_1.Component({

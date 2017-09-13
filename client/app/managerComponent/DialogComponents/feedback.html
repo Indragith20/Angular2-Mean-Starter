@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="postStatus==false">
     <div class="row">
         <div class="col-md-12">
             {{memberDet.name}}
@@ -21,4 +21,11 @@
     </div>
 
 </div>
+<div class="container" *ngIf="postStatus==true">
+    <h3>
+        {{successMessage}}
+    </h3>
+</div>
+
+
 <hr />

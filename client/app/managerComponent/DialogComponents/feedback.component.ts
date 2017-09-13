@@ -11,16 +11,19 @@ import {FeedbackService} from './feedback.service';
 export class FeedbackComponent{
     memberDet:any;
     message:any;
+    postStatus:boolean=false;
+    successMessage:any;
 
     constructor(private feedbackService:FeedbackService){
     }
 
     postMessage(){
-        const formData: any = new FormData();
-        formData.append("memberId",this.memberDet.memberId);
-        formData.append("message",this.message);
-        this.feedbackService.putFeedback(formData)
-            .subscribe(res=>console.log(res));
+        this.feedbackService.putFeedback(this.message,this.memberDet.memberId)
+            .subscribe(res=>{
+                this.postStatus=true
+                console.log(res);
+                this.successMessage=res;
+            });
     }
 
 

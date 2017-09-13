@@ -51,9 +51,9 @@ router.post("/upload", upload.array("uploads[]", 12), function (req, res) {
 
 
 router.post('/feedback',function(req,res){
-    console.log(req.body);
-    console.log("member Id ==>"+req.body.memberId+"message==>"+req.body.message);
-    Model.findOneAndUpdate({memberId:req.body.memberID},{$push: {"feedback": req.body.message}},
+    console.log(req.query);
+    console.log("member Id ==>"+req.query.memberID+"message==>"+req.query.message);
+    Model.findOneAndUpdate({memberId:req.query.memberID},{$push: {"feedback": JSON.parse(req.query.message)}},
     {safe: true, upsert: true, new : true},function(err,doc){
         if(err){
             res.send(err).status(501);

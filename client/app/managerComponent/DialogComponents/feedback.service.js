@@ -16,11 +16,12 @@ var FeedbackService = (function () {
         this.http = http;
         this.token = localStorage.getItem('auth-token');
     }
-    FeedbackService.prototype.putFeedback = function (formData) {
+    FeedbackService.prototype.putFeedback = function (message, memberID) {
+        console.log(message);
         var headers = new http_1.Headers();
         headers.append('x-access-token', this.token);
-        return this.http.post('profile/feedback', formData, { headers: headers })
-            .map(function (response) { return response.json(); });
+        return this.http.post('profile/feedback?memberID=' + memberID + '&message=' + JSON.stringify(message), { headers: headers })
+            .map(function (response) { return response; });
     };
     FeedbackService = __decorate([
         core_1.Injectable(),
