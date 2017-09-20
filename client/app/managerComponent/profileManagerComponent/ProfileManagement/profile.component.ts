@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {HumanService} from '../../app.service';
+import {HumanService} from '../../../app.service';
 import {ProfileService} from './profileService';
 import {MdDialog,MdDialogRef,MdDialogConfig} from '@angular/material';
-import {DialogComponent} from '../dialog.component';
+import {DialogComponent} from '../../dialog.component';
 
 
 @Component({
@@ -63,25 +63,7 @@ export class ProfileComponent{
     getTimeStamp(){
         return new Date();
     }
-    // fileChangeEvent(fileInput: any) {
-    //     this.filesToUpload = <Array<File>>fileInput.target.files;
-    //     //this.product.photo = fileInput.target.files[0]['name'];
-    // }
-
-    // upload() {
-    //     const formData: any = new FormData();
-    //     const files: Array<File> = this.filesToUpload;
-    //     console.log(files[0]['name']);
-    //     formData.append("Name",this.managerDet.name);
-    //     formData.append("Id",this.managerDet.memberId);
-    //     formData.append("uploads[]", files[0], files[0]['name']);
-    //     console.log(formData);
-    //     this.profileService.uploadImage(formData).subscribe(data=>{
-    //         console.log(data);
-    //     });
-        
-        
-    // }
+    
 
     openDialogModal(){
         this.config.data.managerDet=this.humanService.userDet;

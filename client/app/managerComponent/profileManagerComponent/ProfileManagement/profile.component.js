@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var app_service_1 = require("../../app.service");
+var app_service_1 = require("../../../app.service");
 var profileService_1 = require("./profileService");
 var material_1 = require("@angular/material");
-var dialog_component_1 = require("../dialog.component");
+var dialog_component_1 = require("../../dialog.component");
 var ProfileComponent = (function () {
     function ProfileComponent(humanService, profileService, dialog) {
         this.humanService = humanService;
@@ -57,22 +57,6 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.getTimeStamp = function () {
         return new Date();
     };
-    // fileChangeEvent(fileInput: any) {
-    //     this.filesToUpload = <Array<File>>fileInput.target.files;
-    //     //this.product.photo = fileInput.target.files[0]['name'];
-    // }
-    // upload() {
-    //     const formData: any = new FormData();
-    //     const files: Array<File> = this.filesToUpload;
-    //     console.log(files[0]['name']);
-    //     formData.append("Name",this.managerDet.name);
-    //     formData.append("Id",this.managerDet.memberId);
-    //     formData.append("uploads[]", files[0], files[0]['name']);
-    //     console.log(formData);
-    //     this.profileService.uploadImage(formData).subscribe(data=>{
-    //         console.log(data);
-    //     });
-    // }
     ProfileComponent.prototype.openDialogModal = function () {
         var _this = this;
         this.config.data.managerDet = this.humanService.userDet;

@@ -30,7 +30,9 @@ var vacation_dashboard_component_1 = require("./managerComponent/dashboardManage
 var post_manager_component_1 = require("./managerComponent/postManagerComponent/post.manager.component");
 var create_manager_component_1 = require("./managerComponent/createTeamComponent/create.manager.component");
 var add_member_component_1 = require("./managerComponent/addMemberComponent/add.member.component");
-var profile_component_1 = require("./managerComponent/profileManagerComponent/profile.component");
+var profilemain_component_1 = require("./managerComponent/profileManagerComponent/profilemain.component");
+var profile_component_1 = require("./managerComponent/profileManagerComponent/ProfileManagement/profile.component");
+var feedbackview_component_1 = require("./managerComponent/profileManagerComponent/FeedbackManagement/feedbackview.component");
 var app_service_1 = require("./app.service");
 var auth_service_1 = require("./auth.service");
 var AppModule = (function () {
@@ -43,7 +45,8 @@ var AppModule = (function () {
             declarations: [app_component_1.AppComponent, human_component_1.HumanComponent, manager_component_1.ManagerComponent, home_manager_component_1.HomeManagerComponent,
                 dashboard_manager_component_1.DashboardManagerComponent, team_dashboard_component_1.TeamDashBoardComponent, post_manager_component_1.PostManagerComponent,
                 create_manager_component_1.CreateTeamComponent, add_member_component_1.AddMemberComponent, vacation_dashboard_component_1.VacationDashBoardComponent, dialog_component_1.DialogComponent,
-                messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, profile_component_1.ProfileComponent, feedback_component_1.FeedbackComponent],
+                messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, profile_component_1.ProfileComponent, profilemain_component_1.ProfileMainComponent, feedbackview_component_1.FeedbackViewComponent,
+                feedback_component_1.FeedbackComponent],
             providers: [app_service_1.HumanService, auth_service_1.AuthService],
             entryComponents: [dialog_component_1.DialogComponent, messagedialog_component_1.MessageComponent, imageDialog_component_1.ImageComponent, feedback_component_1.FeedbackComponent],
             bootstrap: [app_component_1.AppComponent]

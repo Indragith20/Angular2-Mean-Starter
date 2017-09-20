@@ -26,7 +26,9 @@ import {VacationDashBoardComponent} from './managerComponent/dashboardManagerCom
 import {PostManagerComponent} from './managerComponent/postManagerComponent/post.manager.component';
 import {CreateTeamComponent} from './managerComponent/createTeamComponent/create.manager.component';
 import {AddMemberComponent} from  './managerComponent/addMemberComponent/add.member.component';
-import {ProfileComponent} from  './managerComponent/profileManagerComponent/profile.component';
+import {ProfileMainComponent} from './managerComponent/profileManagerComponent/profilemain.component';
+import {ProfileComponent} from './managerComponent/profileManagerComponent/ProfileManagement/profile.component';
+import {FeedbackViewComponent} from './managerComponent/profileManagerComponent/FeedbackManagement/feedbackview.component';
 
 import {HumanService} from './app.service';
 import {AuthService} from './auth.service';
@@ -37,7 +39,8 @@ import {AuthService} from './auth.service';
   declarations: [ AppComponent ,HumanComponent,ManagerComponent,HomeManagerComponent,
                 DashboardManagerComponent,TeamDashBoardComponent,PostManagerComponent,
                 CreateTeamComponent,AddMemberComponent,VacationDashBoardComponent,DialogComponent,
-                MessageComponent,ImageComponent,ProfileComponent,FeedbackComponent],
+                MessageComponent,ImageComponent,ProfileComponent,ProfileMainComponent,FeedbackViewComponent,
+                FeedbackComponent],
   providers: [HumanService,AuthService],
   entryComponents: [ DialogComponent,MessageComponent,ImageComponent,FeedbackComponent ],
   bootstrap: [ AppComponent ]

@@ -10,7 +10,9 @@ var vacation_dashboard_component_1 = require("./managerComponent/dashboardManage
 var post_manager_component_1 = require("./managerComponent/postManagerComponent/post.manager.component");
 var create_manager_component_1 = require("./managerComponent/createTeamComponent/create.manager.component");
 var add_member_component_1 = require("./managerComponent/addMemberComponent/add.member.component");
-var profile_component_1 = require("./managerComponent/profileManagerComponent/profile.component");
+var profilemain_component_1 = require("./managerComponent/profileManagerComponent/profilemain.component");
+var profile_component_1 = require("./managerComponent/profileManagerComponent/ProfileManagement/profile.component");
+var feedbackview_component_1 = require("./managerComponent/profileManagerComponent/FeedbackManagement/feedbackview.component");
 var auth_service_1 = require("./auth.service");
 var routes = [
     // map '/persons' to the people list component
@@ -37,7 +39,14 @@ var routes = [
             { path: 'post', component: post_manager_component_1.PostManagerComponent },
             { path: 'createteam', component: create_manager_component_1.CreateTeamComponent },
             { path: 'addMember', component: add_member_component_1.AddMemberComponent },
-            { path: 'profile', component: profile_component_1.ProfileComponent }
+            {
+                path: 'profile', component: profilemain_component_1.ProfileMainComponent,
+                children: [
+                    { path: '', redirectTo: 'myprofile', pathMatch: 'full' },
+                    { path: 'myprofile', component: profile_component_1.ProfileComponent },
+                    { path: 'myfeedback', component: feedbackview_component_1.FeedbackViewComponent }
+                ]
+            }
         ],
         canActivate: [auth_service_1.AuthService]
     },
