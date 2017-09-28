@@ -1,5 +1,6 @@
 import {Component,EventEmitter,Input,Output} from '@angular/core';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import * as io from "socket.io-client";
 
 import {HumanService} from './app.service';
 
@@ -11,7 +12,7 @@ import {HumanService} from './app.service';
 })
 
 export class HumanComponent{
-    
+    socket:any = null;
     name:string;
     contactno:number;
     registerPassword:string;
@@ -60,6 +61,7 @@ export class HumanComponent{
                     this.humanService.userDet=details.loggedUserDet;
                     localStorage.setItem('auth-token', details.token);
                     console.log("First Component == >"+this.humanService.userDet);
+                    this.socket = io('http://localhost:4000');
                     this.router.navigate(['/managerMain']);
                 }
                 else{

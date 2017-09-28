@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var io = require("socket.io-client");
 var app_service_1 = require("./app.service");
 var HumanComponent = (function () {
     function HumanComponent(humanService, router) {
         this.humanService = humanService;
         this.router = router;
+        this.socket = null;
         this.registerPageActive = true;
         this.loginPageActive = false;
         // this.registerPageActive=true;
@@ -54,6 +56,7 @@ var HumanComponent = (function () {
                 _this.humanService.userDet = details.loggedUserDet;
                 localStorage.setItem('auth-token', details.token);
                 console.log("First Component == >" + _this.humanService.userDet);
+                _this.socket = io('http://localhost:4000');
                 _this.router.navigate(['/managerMain']);
             }
             else {

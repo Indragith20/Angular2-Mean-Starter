@@ -6,6 +6,7 @@ var bodyparser = require('body-parser');
 var path = require('path');
 var morgan = require('morgan');
 var jwt    = require('jsonwebtoken');
+var socket = require('socket.io');
 
 var config=require('./config/config');
 var mainRouter = require('./routes/index');
@@ -80,4 +81,15 @@ app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 
 
 
-app.listen(port); 
+var server = app.listen(port,function(){
+    console.log("Listening at Port "+port);
+});
+
+var io = socket(server);
+
+io.on('connection',function(socket){
+    console.log("============================================");
+    console.log("Socket Success Yaayyyy" + socket.id);
+    console.log("============================================");    
+})
+

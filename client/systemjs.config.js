@@ -32,7 +32,8 @@
       // other libraries
       'rxjs':                       'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
-      'primeng':                   'npm:primeng' 
+      'primeng':                   'npm:primeng',
+      "socket.io-client": 'npm:socket.io-client'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -46,6 +47,8 @@
       primeng: {
           defaultExtension: 'js'
       },
+      "socket.io-client": {
+        main: './dist/socket.io.js'},
       'angular2-in-memory-web-api': {
         main: './index.js',
         defaultExtension: 'js'
