@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import * as io from "socket.io-client";
 
 @Injectable()
 
 export class HumanService{
 
     public userDet:any;
+    public socket:any = null;
 
     constructor(private http : Http){
 
@@ -23,5 +26,16 @@ export class HumanService{
         headers.append('Content-type','application/json');
         return this.http.get('api/checkUser?username='+name+'&password='+pass)
                 .map(response => response._body);
+    }
+
+    getNotifications(){
+        this.socket=io('http://localhost:4000');
+        return new Observable(observer=>{
+            this.socket.on('notification',function(data:any){
+                observer.next(data);
+            });
+            
+        });
+
     }
 }

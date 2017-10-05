@@ -18,6 +18,7 @@ var eventRouter = require('./routes/eventRouter');
 var profileRouter = require('./routes/profileRouter');
 var verifyRouter = require('./routes/verifyRouter');
 
+
 var app = express();
 app.use(morgan('dev'));
 app.set('superSecret', config.secret);
@@ -87,9 +88,17 @@ var server = app.listen(port,function(){
 
 var io = socket(server);
 
+app.use(function(req,res,next){
+    req.io = io;
+    next();
+});
+
+var socketHandler = require('./routes/socket')(io);
+
 io.on('connection',function(socket){
     console.log("============================================");
-    console.log("Socket Success Yaayyyy" + socket.id);
+    console.log("Socket Success Yaayyyy");
+    socket.emit('news', { hello: 'world' });
     console.log("============================================");    
 })
 

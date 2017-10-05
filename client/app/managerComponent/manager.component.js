@@ -14,8 +14,13 @@ var app_service_1 = require("../app.service");
 var ManagerComponent = (function () {
     function ManagerComponent(humanService) {
         this.humanService = humanService;
+        this.socket = null;
         this.managerDet = this.humanService.userDet;
         console.log("Manager Details==>" + this.managerDet);
+        this.socket.on('news', function (data) {
+            alert(data);
+            console.log(data);
+        });
     }
     ManagerComponent = __decorate([
         core_1.Component({
