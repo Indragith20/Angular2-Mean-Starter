@@ -28,8 +28,8 @@ export class HumanService{
                 .map(response => response._body);
     }
 
-    getNotifications(){
-        this.socket=io('http://localhost:4000');
+    getNotifications(userId:any){
+        this.socket=io('http://localhost:4000', { query: "userId="+userId });
         return new Observable(observer=>{
             this.socket.on('notification',function(data:any){
                 observer.next(data);

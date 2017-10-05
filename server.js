@@ -95,10 +95,10 @@ app.use(function(req,res,next){
 
 var socketHandler = require('./routes/socket')(io);
 
-io.on('connection',function(socket){
-    console.log("============================================");
-    console.log("Socket Success Yaayyyy");
-    socket.emit('news', { hello: 'world' });
-    console.log("============================================");    
-})
+// io.on('connection',function(socket){
+    // console.log("============================================");
+    // console.log("Socket Success Yaayyyy");
+//     socket.emit('news', { hello: 'world' });
+//     console.log("============================================");    
+// })
 

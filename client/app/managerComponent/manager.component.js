@@ -17,11 +17,10 @@ var ManagerComponent = (function () {
         this.socket = null;
         this.managerDet = this.humanService.userDet;
         console.log("Manager Details==>" + this.managerDet);
-        this.socket.on('news', function (data) {
-            alert(data);
-            console.log(data);
-        });
     }
+    ManagerComponent.prototype.ngOnInit = function () {
+        this.humanService.getNotifications(this.managerDet.memberId).subscribe(function (data) { return console.log(data); });
+    };
     ManagerComponent = __decorate([
         core_1.Component({
             selector: 'manager',

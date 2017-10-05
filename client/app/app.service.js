@@ -12,9 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+var Observable_1 = require("rxjs/Observable");
+var io = require("socket.io-client");
 var HumanService = (function () {
     function HumanService(http) {
         this.http = http;
+        this.socket = null;
     }
     HumanService.prototype.addHuman = function (human) {
         var headers = new http_1.Headers();
@@ -28,6 +31,15 @@ var HumanService = (function () {
         headers.append('Content-type', 'application/json');
         return this.http.get('api/checkUser?username=' + name + '&password=' + pass)
             .map(function (response) { return response._body; });
+    };
+    HumanService.prototype.getNotifications = function (userId) {
+        var _this = this;
+        this.socket = io('http://localhost:4000', { query: "userId=" + userId });
+        return new Observable_1.Observable(function (observer) {
+            _this.socket.on('notification', function (data) {
+                observer.next(data);
+            });
+        });
     };
     HumanService = __decorate([
         core_1.Injectable(),

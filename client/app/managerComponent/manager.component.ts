@@ -18,7 +18,7 @@ export class ManagerComponent{
     }
 
     ngOnInit(){
-        this.humanService.getNotifications().subscribe(data=>console.log(data));
+        this.humanService.getNotifications(this.managerDet.memberId).subscribe(data=>console.log(data));
     }
     
    
